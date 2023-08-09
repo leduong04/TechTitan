@@ -97,5 +97,5 @@
 @endsection
 
 @section('js')
-<script src="{{ asset('assets/js/ADMIN/navbar_sidebar.js')}}"></script>
+<script src="{{ asset('assets/js/js_admin/navbar_sidebar.js')}}"></script>
 @endsection

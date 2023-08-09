@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\AdminController\ExampleController;
+use App\Http\Controllers\AdminController\HomeController;
 use App\Http\Controllers\AdminController\OrdersController;
+use App\Http\Controllers\UserController\My_order;
+use App\Http\Controllers\UserController\Personal_information;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +22,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/admin/home', [HomeController::class,'create']);
+
+Route::get('/user/my_order',[My_order::class,'create']);
+
+Route::get('/user/personal_information',[Personal_information::class,'create']);
 
 Route::get('/example', [ExampleController::class, 'show']);
 
