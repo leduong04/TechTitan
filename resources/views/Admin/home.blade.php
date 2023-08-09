@@ -30,7 +30,7 @@
                     <div class="number">40,876</div>
                     <div class="indicator">
                         <i class="bx bx-up-arrow-alt"></i>
-                        <span class="text">Dữ liệu mới nhất</span>
+                        <span class="text">Latest data</span>
                     </div>
                 </div>
                 <i class="bx bxs-cart-alt cart"></i>
@@ -43,7 +43,7 @@
                     <div class="number">40,876</div>
                     <div class="indicator">
                         <i class="bx bx-up-arrow-alt"></i>
-                        <span class="text">Dữ liệu mới nhất</span>
+                        <span class="text">Latest data</span>
                     </div>
                 </div>
                 <i class="bx bx-money cart two"></i>
@@ -56,7 +56,7 @@
                     <div class="number">40,876</div>
                     <div class="indicator">
                         <i class="bx bx-up-arrow-alt"></i>
-                        <span class="text">Dữ liệu mới nhất</span>
+                        <span class="text">Latest data</span>
                     </div>
                 </div>
                 <i class="bx bxs-shopping-bag cart three"></i>
@@ -69,7 +69,7 @@
                     <div class="number">40,876</div>
                     <div class="indicator">
                         <i class="bx bx-up-arrow-alt"></i>
-                        <span class="text">Dữ liệu mới nhất</span>
+                        <span class="text">Latest data</span>
                     </div>
                 </div>
                 <i class="bx bxs-user cart cart four"></i>
