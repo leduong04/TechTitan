@@ -37,7 +37,7 @@ Route::get('/personal_information',[Personal_information::class,'create'])->name
 Route::get('/admin/orders', [OrdersController::class, 'show'])->name('admin.orders');
 
 
-Route::get('/product_detail', [ProductController::class, 'show_product_detail'])->name('user.product_detail');
+// Route::get('/product_detail', [ProductController::class, 'show_product_detail'])->name('user.product_detail');
 
 Route::get('/contact_us', [ContactUsController::class, 'show'])->name('user.contact_us');
 
@@ -46,3 +46,5 @@ Route::get('/home_page', [ProductController::class,'show_home_page'])->name('use
 Route::get('/login', [Login::class,'create'])->name('user.login');
 
 Route::get('/cart', [Cart::class,'create'])->name('user.cart');
+
+Route::get('/home_page/{id}', [ProductController::class, 'show_product_detail'])->name('user.product_detail');

@@ -85,29 +85,23 @@
 									<th>View</th>
 								</tr>
 							</thead>
+              @foreach ($orders as $order)
 							<tbody>
 								<tr>
-									<td>06-02-2020</td>
-									<td>61245231241</td>
-									<td>2,150</td>
-									<td>Unprocessed</td>
+									<td>{{ \Carbon\Carbon::parse($order->curent_at)->format('d/m/Y')}}</td>
+									<td>{{ $order->id}}</td>
+									<td>{{ $order->total_pay}} $</td>
+									<td>
+                    @if ($order->status == 0)
+                        Unprocessed
+                    @elseif($order->status == 1)
+                        Processed
+                    @endif
+                  </td>
 									<td><a href="#">View</a></td>
 								</tr>
-								<tr>
-									<td>08-02-2020</td>
-									<td>612467771245</td>
-									<td>5,000</td>
-									<td>Unprocessed</td>
-									<td><a href="#">View</a></td>
-								</tr>
-								<tr>
-									<td>15-08-2020</td>
-									<td>612874511233</td>
-									<td>3000</td>
-									<td>Processed</td>
-									<td><a href="#">View</a></td>
-								</tr>	
 							</tbody>
+              @endforeach
 						</table>
 					</div>
 				</div>				

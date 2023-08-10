@@ -50,56 +50,24 @@
     <div class="row">
         <div class="col-md-6">
             <div id="slider" class="owl-carousel product-slider">
+            @foreach ($product->images as $image)
                 <div class="item">
-                    <img src="https://i.pinimg.com/236x/c7/f1/db/c7f1dbe084eac0d9f2720470cf538b61.jpg" />
+                <img src="{{ $image->img_link }}" alt="Product Image">
                 </div>
-                <div class="item">
-                    <img src="https://i.pinimg.com/236x/ca/82/6a/ca826adde4534886d997394a9d0e4f96.jpg" />
-                </div>
-                <div class="item">
-                    <img src="https://i.pinimg.com/236x/68/3d/08/683d08d19c9ec8797f42b635e4e47abf.jpg" />
-                </div>
-                <div class="item">
-                    <img src="https://i.pinimg.com/236x/52/83/f7/5283f705ca355c1ebc3fd6385f9c08f4.jpg" />
-                </div>
-                <div class="item">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQI6nUmObt62eDkqNSmIvCN_KkQExtbpJmUbVx_eTh_Y3v3r-Jw" />
-                </div>
-                <div class="item">
-                    <img src="https://i.ytimg.com/vi/PJ_zomNMK_s/maxresdefault.jpg" />
-                </div>
-                <div class="item">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQI6nUmObt62eDkqNSmIvCN_KkQExtbpJmUbVx_eTh_Y3v3r-Jw" />
-                </div>
+            @endforeach
             </div>
             <div id="thumb" class="owl-carousel product-thumb">
+            @foreach ($product->images as $image)
                 <div class="item">
-                    <img src="https://i.pinimg.com/236x/c7/f1/db/c7f1dbe084eac0d9f2720470cf538b61.jpg" />
+                <img src="{{ $image->img_link }}" alt="Product Image">
                 </div>
-                <div class="item">
-                    <img src="https://i.pinimg.com/236x/ca/82/6a/ca826adde4534886d997394a9d0e4f96.jpg" />
-                </div>
-                <div class="item">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQI6nUmObt62eDkqNSmIvCN_KkQExtbpJmUbVx_eTh_Y3v3r-Jw" />
-                </div>
-                <div class="item">
-                    <img src="https://i.ytimg.com/vi/PJ_zomNMK_s/maxresdefault.jpg" />
-                </div>
-                <div class="item">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQI6nUmObt62eDkqNSmIvCN_KkQExtbpJmUbVx_eTh_Y3v3r-Jw" />
-                </div>
-                <div class="item">
-                    <img src="https://i.ytimg.com/vi/PJ_zomNMK_s/maxresdefault.jpg" />
-                </div>
-                <div class="item">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQI6nUmObt62eDkqNSmIvCN_KkQExtbpJmUbVx_eTh_Y3v3r-Jw" />
-                </div>
-            </div>
+            @endforeach
+            </div>            
         </div>
         <div class="col-md-6">
             <div class="product-dtl">
                 <div class="product-info">
-                    <div class="product-name">Variable Product</div>
+                    <div class="product-name">{{ $product->product_name}}</div>
                     <div class="reviews-counter">
                         <div class="rate">
                             <input type="radio" id="star5" name="rate" value="5" checked />
@@ -115,22 +83,24 @@
                         </div>
                         <span>3 Reviews</span>
                     </div>
-                    <div class="brand-section">
-                        <div class="brand-name">Brand: MyBrand</div>
-                    </div>
                 </div>
 
-                <div class="product-price-discount"><span>$39.00</span><span class="line-through">$29.00</span>
+                <div class="product-price-discount"><span>${{$product -> price}}</span>
                 </div>
             </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p>{{ $product -> description}}</p>
             <div class="row">
 
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label>Trạng thái:</label> Còn hàng
+                        <label>Status:</label> 
+                        @if($product->quantity == 0)
+                            Out of stock
+                        
+                        @else
+                            In stock
+                        @endif
+
                     </div>
                 </div>
             </div>
