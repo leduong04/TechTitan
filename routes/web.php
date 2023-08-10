@@ -26,23 +26,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin/home', [HomeController::class,'create']);
+Route::get('/admin/home', [HomeController::class,'create'])->name('admin.home');
 
-Route::get('/my_order',[My_order::class,'create']);
+Route::get('/my_order',[My_order::class,'create'])->name('user.my_order');
 
-Route::get('/personal_information',[Personal_information::class,'create']);
-
-
-
-Route::get('/admin/orders', [OrdersController::class, 'show']);
+Route::get('/personal_information',[Personal_information::class,'create'])->name('user.personal_information');
 
 
-Route::get('/product_detail', [ProductController::class, 'show_product_detail']);
 
-Route::get('/contact_us', [ContactUsController::class, 'show']);
+Route::get('/admin/orders', [OrdersController::class, 'show'])->name('admin.orders');
 
-Route::get('/home_page', [ProductController::class,'show_home_page']);
 
-Route::get('/login', [Login::class,'create']);
+Route::get('/product_detail', [ProductController::class, 'show_product_detail'])->name('user.product_detail');
 
-Route::get('/cart', [Cart::class,'create']);
+Route::get('/contact_us', [ContactUsController::class, 'show'])->name('user.contact_us');
+
+Route::get('/home_page', [ProductController::class,'show_home_page'])->name('user.home_page');
+
+Route::get('/login', [Login::class,'create'])->name('user.login');
+
+Route::get('/cart', [Cart::class,'create'])->name('user.cart');
