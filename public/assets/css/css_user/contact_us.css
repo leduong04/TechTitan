@@ -1,39 +1,40 @@
-.container#form{
+#form{
     background-color: #e8edf0;
+    margin-top: 60px;
 }
-#label{
+.contact_form #label{
     font-weight: 600;
     margin: 15px 0 15px 0 ;
     font-size: 14px;
 }
-input{
+.contact_form input{
     height: 44px;
     width: 100%;
     padding: 6px 12px;
 }
-textarea{
+.contact_form textarea{
     height: 150px;
     width: 100%;
     padding: 6px 12px;
 }
-input,textarea {
+.contact_form textarea {
     border-radius: 0.25rem;
     border: none;
     
     
 }
 
-.form {
+.contact_form .form {
     padding: 48px;
 }
 #form{
     margin-top: 80px;
 }
 
-h2{
+.contact_form h2{
     margin-top: -20px;
 }
-button{
+.contact_form button{
     background-color: #005745;
     width: fit-content;
     padding: 6px 12px;
@@ -44,7 +45,7 @@ button{
     font-size: 14px;
 }
 
-.icon span{
+.contact .icon span{
     display: block;
     font-size: 25px;
     color: #fff;
@@ -57,10 +58,10 @@ button{
 #icon{
     text-align: center;
 }
-.icon{
+.contact .icon{
     margin: 50px 0 50px 113.75px;
 }
 
-.text a{
+.contact .text a{
     color: #005745;
 }

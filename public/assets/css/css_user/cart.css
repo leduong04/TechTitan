@@ -1,0 +1,160 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+#container {
+    max-width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    margin-top: 120px;
+    margin-bottom: 120px;
+}
+
+#container h1 {
+    text-align: center;
+    color: red;
+}
+
+#container .cart-items {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+#container .item {
+    display: flex;
+    align-items: center;
+    margin: auto;
+    width: 85%;
+    height: 150px;
+
+}
+
+#container .item img {
+    width: 150px;
+    height: 150px;
+    margin-right: 10px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+#container .item-info {
+    flex: 1;
+}
+
+#container .item-info h3 {
+    margin-top: 0;
+}
+
+#container .remove-btn {
+    background-color: #ff4d4d;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-left: 6px;
+    margin-right: 12px;
+    cursor: pointer;
+
+}
+
+#container .cart-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#container .checkout-btn {
+    background-color: #008000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    
+}
+#container .item:hover{
+    border: 1px solid rgb(240, 239, 239);
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+#container .item-info p{
+    color: red;
+}
+#container .add-button {
+    background-color: #ff0000; /* Màu nền đỏ cho nút thêm */
+    width: 70%;
+    height: 50px;
+    border-radius: 6px;
+    margin: auto;
+    margin-top: 18px;
+    color: white;
+    font-size: 16px;
+    border: 1px solid rgb(204, 201, 201);
+}
+#container .add-button:hover{
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #ff4d4d;
+}
+#container .allmonney{
+    
+    width: 70%;
+    height:  30px;
+    margin: auto;  
+}
+#container .allmonney span{
+    color: #ff0000;
+    font-size: 20px;
+    align-items: center;
+    margin-top: 5px;
+}
+#container.submit-button{
+    border: 1px solid red;
+    background-color: rgb(204, 201, 201);
+    width: 70%;
+    height: 50px;
+    margin: auto;
+    margin-top: 18px;
+    color: red;
+    font-size: 16px;
+    border-radius: 6px;
+
+}
+#container .submit-button:hover{
+    background-color: #ff0000;
+    color: white;
+}
+
+#container  .minus-btn{
+ 
+        appearance: auto;
+        text-rendering: auto;
+        color: buttontext;
+        letter-spacing: normal;
+        word-spacing: normal;
+        line-height: normal;
+        text-transform: none;
+        text-indent: 0px;
+        text-shadow: none;
+        display: inline-block;
+        text-align: center;
+        align-items: flex-start;
+        cursor: default;
+        box-sizing: border-box;
+        background-color: buttonface;
+        margin: 0em;
+        padding: 1px 6px;
+        border-width: 2px;
+        border-style: outset;
+        border-color: buttonborder;
+        border-image: initial;
+
+}

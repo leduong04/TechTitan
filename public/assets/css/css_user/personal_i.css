@@ -35,9 +35,10 @@ hr{
 
 main h2 {
     color: var(--darkStaleGray);
-    font-size: 20px;
+    font-size: 1.5 em;
     text-transform: uppercase;
     margin-bottom: 10px;
+	font-weight: bold;
 }
 
 main .container{
@@ -139,6 +140,7 @@ main .breadcrumb{
 	background-color: var(--khaki);
 	padding: 10px 0;
 	margin-bottom: 25px;
+	margin-top: 60px;
 }
 main .breadcrumb ul{
 	display: flex;
