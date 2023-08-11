@@ -11,6 +11,9 @@ use App\Http\Controllers\UserController\My_order;
 use App\Http\Controllers\UserController\Login;
 use Illuminate\Support\Facades\Route;
 
+// Admin controller
+use App\Http\Controllers\AdminController\ProductAdminController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -47,4 +50,14 @@ Route::get('/login', [Login::class,'create'])->name('user.login');
 
 Route::get('/cart', [Cart::class,'create'])->name('user.cart');
 
+
 Route::get('/home_page/{id}', [ProductController::class, 'show_product_detail'])->name('user.product_detail');
+
+Route::get('/admin/product', [ProductAdminController::class, 'show']);
+
+
+// test add product view
+Route::get('/add', function () {
+    return view('/Admin/add_product');
+});
+
