@@ -21,7 +21,7 @@
       <div class="content">
         <a href="{{ route('user.cart') }}" class="cart"><i class="fa-solid fa-basket-shopping"></i><span class="my-content"> Shopping Carts</span></a>
         <div class="dropdown-hotline">
-          <a href="#" class="hotline"><i class="fa-solid fa-phone-volume"></i><span class="my-content"> Hotline</span></a>
+          <a href="{{ route('user.contact_us')}}" class="hotline"><i class="fa-solid fa-phone-volume"></i><span class="my-content"> ContactUs</span></a>
           <div class="hotl-btn">
             <a href="mailto:techtitan@aptech.vn"><span><i class="fa-regular fa-envelope"></i> Email : <span class="inf-btn">techtitan@aptech.vn</span></span></a>
             <a href="#"><span><i class="fa-regular fa-clock"></i> Time : <span class="inf-btn">8h00 - 19h00</span></span></a>
@@ -53,13 +53,29 @@
       <div class="left_list">
         <ul>
           <li><a href=""><i class="fa-solid fa-check-double"></i> All <div id="muiten"><i class="fa-solid fa-chevron-right"></i></div></a></li>
-          <li><a href=""><i class="fa-solid fa-sun"></i> Flowering <div id="muiten"><i class="fa-solid fa-chevron-right"></i></div></a></li>
-          <li><a href=""><i class="fa-solid fa-circle-dot"></i> Non-Flowering <div id="muiten"><i class="fa-solid fa-chevron-right"></i></div></a></li>
-          <li><a href=""><i class="fa-solid fa-house-chimney-window"></i> Indoor <div id="muiten"><i class="fa-solid fa-chevron-right"></i></div></a></li>
-          <li><a href=""><i class="fa-solid fa-snowflake"></i> Outdoor <div id="muiten"><i class="fa-solid fa-chevron-right"></i></div></a></li>
-          <li><a href=""><i class="fa-solid fa-tree"></i> Succulents <div id="muiten"><i class="fa-solid fa-chevron-right"></i></div></a></li>
-          <li><a href=""><i class="fa-solid fa-cannabis"></i> Medicinal <div id="muiten"><i class="fa-solid fa-chevron-right"></i></div></a></li>
-          <li><a href=""><i class="fa-solid fa-trowel"></i> Accessories <div id="muiten"><i class="fa-solid fa-chevron-right"></i></div></a></li>
+          @foreach($categories as $category)  
+          <li><a href="{{ route('category.products', ['categoryName' => $category->Name]) }}">
+          @if( $category->Name == 'Flowering') 
+            <i class="fa-solid fa-sun"></i> 
+          @elseif( $category->Name == 'Non-Flowering')
+            <i class="fa-solid fa-circle-dot"></i>
+          @elseif( $category->Name == 'Indoor')
+            <i class="fa-solid fa-house-chimney-window">
+          @elseif( $category->Name == 'Outdoor')
+            <i class="fa-solid fa-snowflake"></i>
+          @elseif( $category->Name == 'Succulents')
+            <i class="fa-solid fa-tree"></i>
+          @elseif( $category->Name == 'Medicinal')
+            <i class="fa-solid fa-cannabis"></i>
+          @elseif( $category->Name == 'Accessories')
+            <i class="fa-solid fa-screwdriver-wrench"></i>
+          @else
+            <i class="fa-brands fa-pagelines"></i>
+          @endif  
+          {{ $category->Name }} 
+            
+            <div id="muiten"><i class="fa-solid fa-chevron-right"></i></div></a></li>
+          @endforeach
         </ul>
         <div class="all_left"><a href=""><a href=""><img  src="https://www.fast-growing-trees.com/cdn/shop/files/hp-hero-mobile-2-8-8-23.avif?v=6869916982188266093" alt=""></a></a></div>
       </div>
@@ -145,7 +161,7 @@
     </div>
     @foreach($tree_product as $product)
     <div class="prd">
-      <a href="">
+      <a href="{{ route('user.product_detail', ['id' => $product->id]) }}">
         <div class="card">
           <div class="cnt">
             @if ($product->images->count() > 0)
@@ -178,7 +194,7 @@
     </div>
     @foreach($accessories as $product)
     <div class="prd">
-      <a href="">
+      <a href="{{ route('user.product_detail', ['id' => $product->id]) }}">
         <div class="card">
           <div class="cnt">
             @if ($product->images->count() > 0)

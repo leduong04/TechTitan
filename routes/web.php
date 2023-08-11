@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 
 // Admin controller
 use App\Http\Controllers\AdminController\ProductAdminController;
+use App\Http\Controllers\UserController\SmallController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,6 +55,9 @@ Route::get('/cart', [Cart::class,'create'])->name('user.cart');
 Route::get('/home_page/{id}', [ProductController::class, 'show_product_detail'])->name('user.product_detail');
 
 Route::get('/admin/product', [ProductAdminController::class, 'show']);
+
+Route::get('/small/{categoryName}', [SmallController::class,'show'])->name('category.products');
+
 
 
 // test add product view
