@@ -27,7 +27,7 @@
         <div class="profile">
             <button class="profilebtn" onclick="profile()"><img src=""></button>
             <div class="profiledown-content" id="myDropdown">
-                <a href="#">Thông tin</a>
+                <a href="#">Information</a>
                 <a href="#">Link 2</a>
                 <a href="#">Link 3</a>
             </div>

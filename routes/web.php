@@ -9,11 +9,12 @@ use App\Http\Controllers\UserController\ProductController;
 use App\Http\Controllers\UserController\ContactUsController;
 use App\Http\Controllers\UserController\My_order;
 use App\Http\Controllers\UserController\Login;
+
 use Illuminate\Support\Facades\Route;
 
 // Admin controller
 use App\Http\Controllers\AdminController\ProductAdminController;
-
+use App\Http\Controllers\AdminController\CommentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,10 +37,13 @@ Route::get('/my_order',[My_order::class,'create'])->name('user.my_order');
 Route::get('/personal_information',[Personal_information::class,'create'])->name('user.personal_information');
 
 
+// ---------------------
 
 Route::get('/admin/orders', [OrdersController::class, 'show'])->name('admin.orders');
+Route::get('/admin/order_details/{id}', [OrdersController::class, 'show_details'])->name('detail_order');
+Route::DELETE('/admin/order_details/delete/{id}', [OrdersController::class, 'delete']);
 
-
+// ----------------------------
 Route::get('/product_detail', [ProductController::class, 'show_product_detail'])->name('user.product_detail');
 
 Route::get('/contact_us', [ContactUsController::class, 'show'])->name('user.contact_us');
@@ -51,10 +55,21 @@ Route::get('/login', [Login::class,'create'])->name('user.login');
 Route::get('/cart', [Cart::class,'create'])->name('user.cart');
 
 
-Route::get('/admin/product', [ProductAdminController::class, 'show']);
 
 
 // test add product view
 Route::get('/add', function () {
     return view('/Admin/add_product');
 });
+
+Route::get('/admin/product', [ProductAdminController::class, 'show']);
+Route::get('/admin/product_details/{id}', [ProductAdminController::class, 'show_details'])->name('detail_product');
+Route::DELETE('/admin/product_details/delete/{id}', [ProductAdminController::class, 'delete']);
+
+// admin comment
+Route::get('/admin/comment', [CommentController::class, 'show']);
+Route::DELETE('/admin/comment/delete/{id}', [CommentController::class, 'delete']);
+Route::get('/admin/comment_details/{id}', [CommentController::class, 'show_details'])->name('detail_comment');
+
+
+

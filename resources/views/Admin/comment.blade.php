@@ -1,4 +1,4 @@
-@extends('Admin.templates.tpl_default', ['pageId'=>'product'])
+@extends('Admin.templates.tpl_default', ['pageId'=>'comment'])
 
 @section('css')
 <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
@@ -6,12 +6,14 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <!-- CSS -->
+
 <link rel="stylesheet" href="//cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
+
 
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/css_admin/admin.css')}}">
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/css_admin/sidebar.css')}}">
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/css_admin/navbar.css')}}">
-<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/css_admin/pr_list.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/css_admin/comment.css')}}">
 
 
 
@@ -36,56 +38,52 @@
 			<div class="table-data">
 				<div class="order">
 					<div class="head">
-						<h3>Product</h3>
+						<h3>User Comment</h3>
 					</div>
-					<button id="add-button">
-						<i class="fa-solid fa-plus"></i><a href="#"> Add new product</a>
-					</button>
 					<table id="tb">
 						<thead>
 							<tr>
-								<th>Id</th>
-								<th>Name</th>
-                                <th>Categories ID</th>
-                                <th>Quantity</th>
-                                <th>Current at</th>
+								<th>ID</th>
+								<th>User ID</th>
+                                <th>Product ID</th>
+                                <th>Star</th>
+                                <th>Curent At</th>
                                 <th>Action</th>								
 							</tr>
 						</thead>
 						<tbody>
-						@foreach ($products as $product)
+                        @foreach ($comments as $comment)
 							<tr>
 								<td>
-									<p>{{ $product->id }}</p>
+									<p>{{ $comment ->id }}</p>
 								</td>
                                 <td>
                                     <p>
-									{{ $product->product_name }}
+                                    {{ $comment ->user_id }}
+                                    </p>
+                                </td>
+                                
+                                <td>
+                                    <p>
+                                    {{ $comment ->product_id }}
+                                    </p>
+                                </td>
+                                
+                                <td>
+                                    <p>
+                                    {{ $comment ->star }}
                                     </p>
                                 </td>
                                 <td>
                                     <p>
-									{{ $product-> category_id}}
-                                    </p>
-                                </td>
-                                <td>
-                                    <p>
-									{{ $product->quantity }}
-                                    </p>
-                                </td>
-                                <td>
-                                    <p>
-									{{ $product->current_at }}
+                                    {{ $comment ->current_at }}
                                     </p>
                                 </td>
 								<td>
-									<button class="edit-button">
-										<i class="fa-solid fa-pen-to-square"></i>
-									 </button>
-									<button class="detail-button" onclick="show_detail({{ $product->id }})">
+									<button class="detail-button" onclick="show_detail({{ $comment->id }})">
 									      <i class="fa-solid fa-info"></i>
 								    </button>
-									<form action="/admin/product_details/delete/{{$product->id}}" method="POST" onsubmit="return ConfirmDelete( this )">
+                                <form action="/admin/comment/delete/{{$comment->id}}" method="POST" onsubmit="return ConfirmDelete( this )">
 									@method('DELETE')
 									@csrf
 										<button class="delete-button" >
@@ -94,7 +92,7 @@
 									</form>
 								</td>
 							</tr>
-							@endforeach
+                        @endforeach	
 						</tbody>
 					</table>
 				</div>
@@ -110,12 +108,11 @@
 
 <script>
 	function show_detail(id) {
-		var url = "{{ route('detail_product', ['id' => ':id']) }}";
+		var url = "{{ route('detail_comment', ['id' => ':id']) }}";
 		url = url.replace(':id', id);
 		window.location.href = url;
 	}
 
 
 </script>
-
 @endsection

@@ -57,32 +57,16 @@
                     <span class="text">Feedback</span>
                 </a>
             </li>
-            <li>
-                <a href="#" onclick="Team();">
-                    <i class='bx bxs-group'></i>
-                    <span class="text">Nhân viên</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class='bx bxs-file'></i>
-                    <span class="text">Thông tin trang</span>
-                </a>
-            </li>
+            
+            
             <li>
                 <a href="#">
                     <i class='bx bxs-data'></i>
-                    <span class="text">Thống kê báo cáo</span>
+                    <span class="text">Report statistics</span>
                 </a>
             </li>
         </ul>
         <ul class="side-menu">
-            <li>
-                <a href="#">
-                    <i class='bx bxs-cog'></i>
-                    <span class="text">Settings</span>
-                </a>
-            </li>
             <li>
                 <a href="#" class="logout">
                     <i class='bx bxs-log-out-circle'></i>
