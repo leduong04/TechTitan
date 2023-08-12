@@ -52,7 +52,7 @@
       </div>
       <div class="left_list">
         <ul>
-          <li><a href=""><i class="fa-solid fa-check-double"></i> All <div id="muiten"><i class="fa-solid fa-chevron-right"></i></div></a></li>
+          <li><a href="{{ route('category.products', ['categoryName' => 'All']) }}"><i class="fa-solid fa-check-double"></i> All <div id="muiten"><i class="fa-solid fa-chevron-right"></i></div></a></li>
           @foreach($categories as $category)  
           <li><a href="{{ route('category.products', ['categoryName' => $category->Name]) }}">
           @if( $category->Name == 'Flowering') 
@@ -149,7 +149,7 @@
     @endforeach
     
     <div class="more-prd">
-      <a href=""><span>View more products <i class="fa-solid fa-angle-down"></i></span></a>
+      <a href="{{ route('category.products', ['categoryName' => 'All']) }}"><span>View more products <i class="fa-solid fa-angle-down"></i></span></a>
     </div>
     
   </section>
@@ -181,7 +181,7 @@
     </div>
     @endforeach
     <div class="more-prd">
-      <a href=""><span>View more products <i class="fa-solid fa-angle-down"></i></span></a>
+      <a href="{{ route('category.products', ['categoryName' => 'All']) }}"><span>View more products <i class="fa-solid fa-angle-down"></i></span></a>
     </div>
     
   </section>
@@ -215,7 +215,7 @@
     @endforeach
     
     <div class="more-prd">
-      <a href=""><span>View more products <i class="fa-solid fa-angle-down"></i></span></a>
+      <a href="{{ route('category.products', ['categoryName' => 'Accessories']) }}"><span>View more products <i class="fa-solid fa-angle-down"></i></span></a>
     </div>
     
   </section>
@@ -246,15 +246,13 @@
         </ul>
         <ul class="box">
           <li class="link_name">Account management</li>
-          <li><a href="#">Create an Account / Sign In</a></li>
-          <li><a href="#">Forgot password</a></li>
-          <li><a href="#">Purchase history</a></li>
-          <li><a href="#">Track My Shipment</a></li>
+          <li><a href="{{ route('user.personal_information') }}">My account</a></li>
+          <li><a href="{{ route('user.my_order') }}">Purchase history</a></li>
         </ul>
         <ul class="box">
           <li class="link_name">Our Company</li>
           <li><a href="#">About Us</a></li>
-          <li><a href="">List of products</a></li>
+          <li><a href="{{ route('category.products', ['categoryName' => 'All']) }}">List of products</a></li>
         </ul>
         <ul class="box">
           <li class="link_name">Find us on social:</li>

@@ -58,6 +58,7 @@ Route::get('/admin/product', [ProductAdminController::class, 'show']);
 
 Route::get('/small/{categoryName}', [SmallController::class,'show'])->name('category.products');
 
+Route::get('/sign', [Login::class,'show'])->name('user.sign');
 
 
 // test add product view
