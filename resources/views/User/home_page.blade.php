@@ -21,7 +21,7 @@
       <div class="content">
         <a href="{{ route('user.cart') }}" class="cart"><i class="fa-solid fa-basket-shopping"></i><span class="my-content"> Shopping Carts</span></a>
         <div class="dropdown-hotline">
-          <a href="#" class="hotline"><i class="fa-solid fa-phone-volume"></i><span class="my-content"> Hotline</span></a>
+          <a href="{{ route('user.contact_us')}}" class="hotline"><i class="fa-solid fa-phone-volume"></i><span class="my-content"> ContactUs</span></a>
           <div class="hotl-btn">
             <a href="mailto:techtitan@aptech.vn"><span><i class="fa-regular fa-envelope"></i> Email : <span class="inf-btn">techtitan@aptech.vn</span></span></a>
             <a href="#"><span><i class="fa-regular fa-clock"></i> Time : <span class="inf-btn">8h00 - 19h00</span></span></a>
@@ -52,14 +52,30 @@
       </div>
       <div class="left_list">
         <ul>
-          <li><a href=""><i class="fa-solid fa-check-double"></i> All <div id="muiten"><i class="fa-solid fa-chevron-right"></i></div></a></li>
-          <li><a href=""><i class="fa-solid fa-sun"></i> Flowering <div id="muiten"><i class="fa-solid fa-chevron-right"></i></div></a></li>
-          <li><a href=""><i class="fa-solid fa-circle-dot"></i> Non-Flowering <div id="muiten"><i class="fa-solid fa-chevron-right"></i></div></a></li>
-          <li><a href=""><i class="fa-solid fa-house-chimney-window"></i> Indoor <div id="muiten"><i class="fa-solid fa-chevron-right"></i></div></a></li>
-          <li><a href=""><i class="fa-solid fa-snowflake"></i> Outdoor <div id="muiten"><i class="fa-solid fa-chevron-right"></i></div></a></li>
-          <li><a href=""><i class="fa-solid fa-tree"></i> Succulents <div id="muiten"><i class="fa-solid fa-chevron-right"></i></div></a></li>
-          <li><a href=""><i class="fa-solid fa-cannabis"></i> Medicinal <div id="muiten"><i class="fa-solid fa-chevron-right"></i></div></a></li>
-          <li><a href=""><i class="fa-solid fa-trowel"></i> Gardening Tools <div id="muiten"><i class="fa-solid fa-chevron-right"></i></div></a></li>
+          <li><a href="{{ route('category.products', ['categoryName' => 'All']) }}"><i class="fa-solid fa-check-double"></i> All <div id="muiten"><i class="fa-solid fa-chevron-right"></i></div></a></li>
+          @foreach($categories as $category)  
+          <li><a href="{{ route('category.products', ['categoryName' => $category->Name]) }}">
+          @if( $category->Name == 'Flowering') 
+            <i class="fa-solid fa-sun"></i> 
+          @elseif( $category->Name == 'Non-Flowering')
+            <i class="fa-solid fa-circle-dot"></i>
+          @elseif( $category->Name == 'Indoor')
+            <i class="fa-solid fa-house-chimney-window">
+          @elseif( $category->Name == 'Outdoor')
+            <i class="fa-solid fa-snowflake"></i>
+          @elseif( $category->Name == 'Succulents')
+            <i class="fa-solid fa-tree"></i>
+          @elseif( $category->Name == 'Medicinal')
+            <i class="fa-solid fa-cannabis"></i>
+          @elseif( $category->Name == 'Accessories')
+            <i class="fa-solid fa-screwdriver-wrench"></i>
+          @else
+            <i class="fa-brands fa-pagelines"></i>
+          @endif  
+          {{ $category->Name }} 
+            
+            <div id="muiten"><i class="fa-solid fa-chevron-right"></i></div></a></li>
+          @endforeach
         </ul>
         <div class="all_left"><a href=""><a href=""><img  src="https://www.fast-growing-trees.com/cdn/shop/files/hp-hero-mobile-2-8-8-23.avif?v=6869916982188266093" alt=""></a></a></div>
       </div>
@@ -110,118 +126,30 @@
       <i class="fa-solid fa-heart"></i>
       <span>You may also like</span>
     </div>
+    @foreach ($like_product as $product)
     <div class="prd">
-      <a href="">
+      <a href="{{ route('user.product_detail', ['id' => $product->id]) }}">
         <div class="card">
           <div class="cnt">
-            <img src="https://cdn.shopify.com/s/files/1/0059/8835/2052/products/Honeycrisp_Apple_FGT_600x600_37b093b6-286a-4095-a2ee-0f7bfc41a08c_400x400.jpg?v=1683206017" alt="">
+            @if ($product->images->count() > 0)
+              <img src="{{ $product->images->first()->img_link }}" alt="">
+            @else
+              <img src="default_image_url_here" alt="No Image">
+            @endif
           </div>
           <div class="container">
-            <div class="name"><span>Muskogee Crape Myrtle Tree</span></div>
-            <div class="price"><span>$99.99</span> 
+            <div class="name"><span>{{ $product->product_name}}</span></div>
+            <div class="price"><span>${{$product->price}}</span> 
             </div>
           </div>
         </div>
       </a>
       <a href="https://www.fast-growing-trees.com/" class="work"><span><i class="fa-solid fa-bag-shopping"></i></span><span class="add"> ADD</span></a>
     </div>
-    <div class="prd">
-      <a href="">
-        <div class="card">
-          <div class="cnt">
-            <img src="https://cdn.shopify.com/s/files/1/0059/8835/2052/products/Honeycrisp_Apple_FGT_600x600_37b093b6-286a-4095-a2ee-0f7bfc41a08c_400x400.jpg?v=1683206017" alt="">
-          </div>
-          <div class="container">
-            <div class="name"><span>Muskogee Crape Myrtle Tree</span></div>
-            <div class="price"><span>$99.99</span> 
-            </div>
-          </div>
-        </div>
-      </a>
-      <a href="https://www.fast-growing-trees.com/" class="work"><span><i class="fa-solid fa-bag-shopping"></i></span><span class="add"> ADD</span></a>
-    </div>
-    <div class="prd">
-      <a href="">
-        <div class="card">
-          <div class="cnt">
-            <img src="https://cdn.shopify.com/s/files/1/0059/8835/2052/products/Honeycrisp_Apple_FGT_600x600_37b093b6-286a-4095-a2ee-0f7bfc41a08c_400x400.jpg?v=1683206017" alt="">
-          </div>
-          <div class="container">
-            <div class="name"><span>Muskogee Crape Myrtle Tree</span></div>
-            <div class="price"><span>$99.99</span> 
-            </div>
-          </div>
-        </div>
-      </a>
-      <a href="https://www.fast-growing-trees.com/" class="work"><span><i class="fa-solid fa-bag-shopping"></i></span><span class="add"> ADD</span></a>
-    </div>
-
-    <div class="prd">
-      <a href="">
-        <div class="card">
-          <div class="cnt">
-            <img src="https://cdn.shopify.com/s/files/1/0059/8835/2052/products/Honeycrisp_Apple_FGT_600x600_37b093b6-286a-4095-a2ee-0f7bfc41a08c_400x400.jpg?v=1683206017" alt="">
-          </div>
-          <div class="container">
-            <div class="name"><span>Muskogee Crape Myrtle Tree</span></div>
-            <div class="price"><span>$99.99</span> 
-            </div>
-          </div>
-        </div>
-      </a>
-      <a href="https://www.fast-growing-trees.com/" class="work"><span><i class="fa-solid fa-bag-shopping"></i></span><span class="add"> ADD</span></a>
-    </div>
-
-    <div class="prd">
-      <a href="">
-        <div class="card">
-          <div class="cnt">
-            <img src="https://cdn.shopify.com/s/files/1/0059/8835/2052/products/Honeycrisp_Apple_FGT_600x600_37b093b6-286a-4095-a2ee-0f7bfc41a08c_400x400.jpg?v=1683206017" alt="">
-          </div>
-          <div class="container">
-            <div class="name"><span>Muskogee Crape Myrtle Tree</span></div>
-            <div class="price"><span>$99.99</span> 
-            </div>
-          </div>
-        </div>
-      </a>
-      <a href="https://www.fast-growing-trees.com/" class="work"><span><i class="fa-solid fa-bag-shopping"></i></span><span class="add"> ADD</span></a>
-    </div>
-
-    <div class="prd">
-      <a href="">
-        <div class="card">
-          <div class="cnt">
-            <img src="https://cdn.shopify.com/s/files/1/0059/8835/2052/products/Honeycrisp_Apple_FGT_600x600_37b093b6-286a-4095-a2ee-0f7bfc41a08c_400x400.jpg?v=1683206017" alt="">
-          </div>
-          <div class="container">
-            <div class="name"><span>Muskogee Crape Myrtle Tree</span></div>
-            <div class="price"><span>$99.99</span> 
-            </div>
-          </div>
-        </div>
-      </a>
-      <a href="https://www.fast-growing-trees.com/" class="work"><span><i class="fa-solid fa-bag-shopping"></i></span><span class="add"> ADD</span></a>
-    </div>
-
-    <div class="prd">
-      <a href="">
-        <div class="card">
-          <div class="cnt">
-            <img src="https://cdn.shopify.com/s/files/1/0059/8835/2052/products/Honeycrisp_Apple_FGT_600x600_37b093b6-286a-4095-a2ee-0f7bfc41a08c_400x400.jpg?v=1683206017" alt="">
-          </div>
-          <div class="container">
-            <div class="name"><span>Muskogee Crape Myrtle Tree</span></div>
-            <div class="price"><span>$99.99</span> 
-            </div>
-          </div>
-        </div>
-      </a>
-      <a href="https://www.fast-growing-trees.com/" class="work"><span><i class="fa-solid fa-bag-shopping"></i></span><span class="add"> ADD</span></a>
-    </div>
+    @endforeach
     
     <div class="more-prd">
-      <a href=""><span>View more products <i class="fa-solid fa-angle-down"></i></span></a>
+      <a href="{{ route('category.products', ['categoryName' => 'All']) }}"><span>View more products <i class="fa-solid fa-angle-down"></i></span></a>
     </div>
     
   </section>
@@ -229,105 +157,31 @@
   <section class="main">
     <div class="content">
       <i class="fa-solid fa-spa"></i>
-      <span>Flower In Techtitan</span>
+      <span>Tree In Techtitan</span>
     </div>
+    @foreach($tree_product as $product)
     <div class="prd">
-      <a href="">
+      <a href="{{ route('user.product_detail', ['id' => $product->id]) }}">
         <div class="card">
           <div class="cnt">
-            <img src="https://cdn.shopify.com/s/files/1/0059/8835/2052/products/Honeycrisp_Apple_FGT_600x600_37b093b6-286a-4095-a2ee-0f7bfc41a08c_400x400.jpg?v=1683206017" alt="">
+            @if ($product->images->count() > 0)
+              <img src="{{ $product->images->first()->img_link }}" alt="">
+            @else
+              <img src="default_image_url_here" alt="No Image">
+            @endif
           </div>
           <div class="container">
-            <div class="name"><span>Muskogee Crape Myrtle Tree</span></div>
-            <div class="price"><span>$99.99</span> 
+            <div class="name"><span>{{ $product->product_name}}</span></div>
+            <div class="price"><span>${{$product->price}}</span> 
             </div>
           </div>
         </div>
       </a>
       <a href="https://www.fast-growing-trees.com/" class="work"><span><i class="fa-solid fa-bag-shopping"></i></span><span class="add"> ADD</span></a>
     </div>
-    <div class="prd">
-      <a href="">
-        <div class="card">
-          <div class="cnt">
-            <img src="https://cdn.shopify.com/s/files/1/0059/8835/2052/products/Honeycrisp_Apple_FGT_600x600_37b093b6-286a-4095-a2ee-0f7bfc41a08c_400x400.jpg?v=1683206017" alt="">
-          </div>
-          <div class="container">
-            <div class="name"><span>Muskogee Crape Myrtle Tree</span></div>
-            <div class="price"><span>$99.99</span> 
-            </div>
-          </div>
-        </div>
-      </a>
-      <a href="https://www.fast-growing-trees.com/" class="work"><span><i class="fa-solid fa-bag-shopping"></i></span><span class="add"> ADD</span></a>
-    </div>
-
-    <div class="prd">
-      <a href="">
-        <div class="card">
-          <div class="cnt">
-            <img src="https://cdn.shopify.com/s/files/1/0059/8835/2052/products/Honeycrisp_Apple_FGT_600x600_37b093b6-286a-4095-a2ee-0f7bfc41a08c_400x400.jpg?v=1683206017" alt="">
-          </div>
-          <div class="container">
-            <div class="name"><span>Muskogee Crape Myrtle Tree</span></div>
-            <div class="price"><span>$99.99</span> 
-            </div>
-          </div>
-        </div>
-      </a>
-      <a href="https://www.fast-growing-trees.com/" class="work"><span><i class="fa-solid fa-bag-shopping"></i></span><span class="add"> ADD</span></a>
-    </div>
-
-    <div class="prd">
-      <a href="">
-        <div class="card">
-          <div class="cnt">
-            <img src="https://cdn.shopify.com/s/files/1/0059/8835/2052/products/Honeycrisp_Apple_FGT_600x600_37b093b6-286a-4095-a2ee-0f7bfc41a08c_400x400.jpg?v=1683206017" alt="">
-          </div>
-          <div class="container">
-            <div class="name"><span>Muskogee Crape Myrtle Tree</span></div>
-            <div class="price"><span>$99.99</span> 
-            </div>
-          </div>
-        </div>
-      </a>
-      <a href="https://www.fast-growing-trees.com/" class="work"><span><i class="fa-solid fa-bag-shopping"></i></span><span class="add"> ADD</span></a>
-    </div>
-
-    <div class="prd">
-      <a href="">
-        <div class="card">
-          <div class="cnt">
-            <img src="https://cdn.shopify.com/s/files/1/0059/8835/2052/products/Honeycrisp_Apple_FGT_600x600_37b093b6-286a-4095-a2ee-0f7bfc41a08c_400x400.jpg?v=1683206017" alt="">
-          </div>
-          <div class="container">
-            <div class="name"><span>Muskogee Crape Myrtle Tree</span></div>
-            <div class="price"><span>$99.99</span> 
-            </div>
-          </div>
-        </div>
-      </a>
-      <a href="https://www.fast-growing-trees.com/" class="work"><span><i class="fa-solid fa-bag-shopping"></i></span><span class="add"> ADD</span></a>
-    </div>
-
-    <div class="prd">
-      <a href="">
-        <div class="card">
-          <div class="cnt">
-            <img src="https://cdn.shopify.com/s/files/1/0059/8835/2052/products/Honeycrisp_Apple_FGT_600x600_37b093b6-286a-4095-a2ee-0f7bfc41a08c_400x400.jpg?v=1683206017" alt="">
-          </div>
-          <div class="container">
-            <div class="name"><span>Muskogee Crape Myrtle Tree</span></div>
-            <div class="price"><span>$99.99</span> 
-            </div>
-          </div>
-        </div>
-      </a>
-      <a href="https://www.fast-growing-trees.com/" class="work"><span><i class="fa-solid fa-bag-shopping"></i></span><span class="add"> ADD</span></a>
-    </div>
-    
+    @endforeach
     <div class="more-prd">
-      <a href=""><span>View more products <i class="fa-solid fa-angle-down"></i></span></a>
+      <a href="{{ route('category.products', ['categoryName' => 'All']) }}"><span>View more products <i class="fa-solid fa-angle-down"></i></span></a>
     </div>
     
   </section>
@@ -336,105 +190,32 @@
   <section class="main">
     <div class="content">
       <i class="fa-solid fa-screwdriver-wrench"></i>
-      <span>Garden Tools</span>
+      <span>Accessories</span>
     </div>
+    @foreach($accessories as $product)
     <div class="prd">
-      <a href="">
+      <a href="{{ route('user.product_detail', ['id' => $product->id]) }}">
         <div class="card">
           <div class="cnt">
-            <img src="https://cdn.shopify.com/s/files/1/0059/8835/2052/products/Honeycrisp_Apple_FGT_600x600_37b093b6-286a-4095-a2ee-0f7bfc41a08c_400x400.jpg?v=1683206017" alt="">
+            @if ($product->images->count() > 0)
+              <img src="{{ $product->images->first()->img_link }}" alt="">
+            @else
+              <img src="default_image_url_here" alt="No Image">
+            @endif
           </div>
           <div class="container">
-            <div class="name"><span>Muskogee Crape Myrtle Tree</span></div>
-            <div class="price"><span>$99.99</span> 
+            <div class="name"><span>{{ $product->product_name}}</span></div>
+            <div class="price"><span>${{$product->price}}</span> 
             </div>
           </div>
         </div>
       </a>
       <a href="https://www.fast-growing-trees.com/" class="work"><span><i class="fa-solid fa-bag-shopping"></i></span><span class="add"> ADD</span></a>
     </div>
-    <div class="prd">
-      <a href="">
-        <div class="card">
-          <div class="cnt">
-            <img src="https://cdn.shopify.com/s/files/1/0059/8835/2052/products/Honeycrisp_Apple_FGT_600x600_37b093b6-286a-4095-a2ee-0f7bfc41a08c_400x400.jpg?v=1683206017" alt="">
-          </div>
-          <div class="container">
-            <div class="name"><span>Muskogee Crape Myrtle Tree</span></div>
-            <div class="price"><span>$99.99</span> 
-            </div>
-          </div>
-        </div>
-      </a>
-      <a href="https://www.fast-growing-trees.com/" class="work"><span><i class="fa-solid fa-bag-shopping"></i></span><span class="add"> ADD</span></a>
-    </div>
-
-    <div class="prd">
-      <a href="">
-        <div class="card">
-          <div class="cnt">
-            <img src="https://cdn.shopify.com/s/files/1/0059/8835/2052/products/Honeycrisp_Apple_FGT_600x600_37b093b6-286a-4095-a2ee-0f7bfc41a08c_400x400.jpg?v=1683206017" alt="">
-          </div>
-          <div class="container">
-            <div class="name"><span>Muskogee Crape Myrtle Tree</span></div>
-            <div class="price"><span>$99.99</span> 
-            </div>
-          </div>
-        </div>
-      </a>
-      <a href="https://www.fast-growing-trees.com/" class="work"><span><i class="fa-solid fa-bag-shopping"></i></span><span class="add"> ADD</span></a>
-    </div>
-
-    <div class="prd">
-      <a href="">
-        <div class="card">
-          <div class="cnt">
-            <img src="https://cdn.shopify.com/s/files/1/0059/8835/2052/products/Honeycrisp_Apple_FGT_600x600_37b093b6-286a-4095-a2ee-0f7bfc41a08c_400x400.jpg?v=1683206017" alt="">
-          </div>
-          <div class="container">
-            <div class="name"><span>Muskogee Crape Myrtle Tree</span></div>
-            <div class="price"><span>$99.99</span> 
-            </div>
-          </div>
-        </div>
-      </a>
-      <a href="https://www.fast-growing-trees.com/" class="work"><span><i class="fa-solid fa-bag-shopping"></i></span><span class="add"> ADD</span></a>
-    </div>
-
-    <div class="prd">
-      <a href="">
-        <div class="card">
-          <div class="cnt">
-            <img src="https://cdn.shopify.com/s/files/1/0059/8835/2052/products/Honeycrisp_Apple_FGT_600x600_37b093b6-286a-4095-a2ee-0f7bfc41a08c_400x400.jpg?v=1683206017" alt="">
-          </div>
-          <div class="container">
-            <div class="name"><span>Muskogee Crape Myrtle Tree</span></div>
-            <div class="price"><span>$99.99</span> 
-            </div>
-          </div>
-        </div>
-      </a>
-      <a href="https://www.fast-growing-trees.com/" class="work"><span><i class="fa-solid fa-bag-shopping"></i></span><span class="add"> ADD</span></a>
-    </div>
-
-    <div class="prd">
-      <a href="">
-        <div class="card">
-          <div class="cnt">
-            <img src="https://cdn.shopify.com/s/files/1/0059/8835/2052/products/Honeycrisp_Apple_FGT_600x600_37b093b6-286a-4095-a2ee-0f7bfc41a08c_400x400.jpg?v=1683206017" alt="">
-          </div>
-          <div class="container">
-            <div class="name"><span>Muskogee Crape Myrtle Tree</span></div>
-            <div class="price"><span>$99.99</span> 
-            </div>
-          </div>
-        </div>
-      </a>
-      <a href="https://www.fast-growing-trees.com/" class="work"><span><i class="fa-solid fa-bag-shopping"></i></span><span class="add"> ADD</span></a>
-    </div>
+    @endforeach
     
     <div class="more-prd">
-      <a href=""><span>View more products <i class="fa-solid fa-angle-down"></i></span></a>
+      <a href="{{ route('category.products', ['categoryName' => 'Accessories']) }}"><span>View more products <i class="fa-solid fa-angle-down"></i></span></a>
     </div>
     
   </section>
@@ -465,15 +246,13 @@
         </ul>
         <ul class="box">
           <li class="link_name">Account management</li>
-          <li><a href="#">Create an Account / Sign In</a></li>
-          <li><a href="#">Forgot password</a></li>
-          <li><a href="#">Purchase history</a></li>
-          <li><a href="#">Track My Shipment</a></li>
+          <li><a href="{{ route('user.personal_information') }}">My account</a></li>
+          <li><a href="{{ route('user.my_order') }}">Purchase history</a></li>
         </ul>
         <ul class="box">
           <li class="link_name">Our Company</li>
           <li><a href="#">About Us</a></li>
-          <li><a href="">List of products</a></li>
+          <li><a href="{{ route('category.products', ['categoryName' => 'All']) }}">List of products</a></li>
         </ul>
         <ul class="box">
           <li class="link_name">Find us on social:</li>

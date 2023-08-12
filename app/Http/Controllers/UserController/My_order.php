@@ -4,6 +4,7 @@ namespace App\Http\Controllers\UserController;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\orders;
 
 class My_order extends Controller
 {
@@ -20,7 +21,8 @@ class My_order extends Controller
      */
     public function create()
     {
-        return view('/User/my_order');
+        $orders = orders::all();
+        return view('/User/my_order', compact('orders'));
     }
 
     /**

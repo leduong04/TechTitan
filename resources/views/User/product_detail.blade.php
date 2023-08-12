@@ -19,15 +19,15 @@
 <body>
 <nav class="navbard">
         <div class="containerd">
-        <a class="name_web" href=""><h2 class="h2n"><i class="fa-solid fa-seedling"></i> TECHTITAN</h2></a>
+        <a class="name_web" href="{{ route('user.home_page') }}"><h2 class="h2n"><i class="fa-solid fa-seedling"></i> TECHTITAN</h2></a>
         <div class="search-bard">
             <i class="fa-solid fa-magnifying-glass"></i>
             <input type="search" placeholder="Search">
         </div>
         <div class="contentd">
-            <a href="" class="cart"><i class="fa-solid fa-basket-shopping"></i><span class="my-content"> Shopping Carts</span></a>
+            <a href="{{ route('user.cart') }}" class="cart"><i class="fa-solid fa-basket-shopping"></i><span class="my-content"> Shopping Carts</span></a>
             <div class="dropdown-hotline">
-            <a href="" class="hotline"><i class="fa-solid fa-phone-volume"></i><span class="my-content"> Hotline</span></a>
+            <a href="{{ route('user.contact_us')}}" class="hotline"><i class="fa-solid fa-phone-volume"></i><span class="my-content"> Hotline</span></a>
             <div class="hotl-btn">
                 <a href="mailto:techtitan@aptech.vn" class="em"><span><i class="fa-regular fa-envelope"></i> Email : <span class="inf-btn">techtitan@aptech.vn</span></span></a>
                 <a href="#" class="time"><span><i class="fa-regular fa-clock"></i> Time : <span class="inf-btn">8h00 - 19h00</span></span></a>
@@ -36,8 +36,8 @@
             <div class="dropdown-account">
             <a href="" class="account"><i class="fa-solid fa-circle-user"></i><span class="my-content"> Account</span></a>
             <div class="acc-btn">
-                <a href="#" class="ai"><span>Account Information</span></a>
-                <a href="#" class="mo"><span>My Order</span></a>
+                <a href="{{ route('user.personal_information') }}" class="ai"><span>Account Information</span></a>
+                <a href="{{ route('user.my_order') }}" class="mo"><span>My Order</span></a>
             </div>
             </div>
         </div>
@@ -50,56 +50,24 @@
     <div class="row">
         <div class="col-md-6">
             <div id="slider" class="owl-carousel product-slider">
+            @foreach ($product->images as $image)
                 <div class="item">
-                    <img src="https://i.pinimg.com/236x/c7/f1/db/c7f1dbe084eac0d9f2720470cf538b61.jpg" />
+                <img src="{{ $image->img_link }}" alt="Product Image">
                 </div>
-                <div class="item">
-                    <img src="https://i.pinimg.com/236x/ca/82/6a/ca826adde4534886d997394a9d0e4f96.jpg" />
-                </div>
-                <div class="item">
-                    <img src="https://i.pinimg.com/236x/68/3d/08/683d08d19c9ec8797f42b635e4e47abf.jpg" />
-                </div>
-                <div class="item">
-                    <img src="https://i.pinimg.com/236x/52/83/f7/5283f705ca355c1ebc3fd6385f9c08f4.jpg" />
-                </div>
-                <div class="item">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQI6nUmObt62eDkqNSmIvCN_KkQExtbpJmUbVx_eTh_Y3v3r-Jw" />
-                </div>
-                <div class="item">
-                    <img src="https://i.ytimg.com/vi/PJ_zomNMK_s/maxresdefault.jpg" />
-                </div>
-                <div class="item">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQI6nUmObt62eDkqNSmIvCN_KkQExtbpJmUbVx_eTh_Y3v3r-Jw" />
-                </div>
+            @endforeach
             </div>
             <div id="thumb" class="owl-carousel product-thumb">
+            @foreach ($product->images as $image)
                 <div class="item">
-                    <img src="https://i.pinimg.com/236x/c7/f1/db/c7f1dbe084eac0d9f2720470cf538b61.jpg" />
+                <img src="{{ $image->img_link }}" alt="Product Image">
                 </div>
-                <div class="item">
-                    <img src="https://i.pinimg.com/236x/ca/82/6a/ca826adde4534886d997394a9d0e4f96.jpg" />
-                </div>
-                <div class="item">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQI6nUmObt62eDkqNSmIvCN_KkQExtbpJmUbVx_eTh_Y3v3r-Jw" />
-                </div>
-                <div class="item">
-                    <img src="https://i.ytimg.com/vi/PJ_zomNMK_s/maxresdefault.jpg" />
-                </div>
-                <div class="item">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQI6nUmObt62eDkqNSmIvCN_KkQExtbpJmUbVx_eTh_Y3v3r-Jw" />
-                </div>
-                <div class="item">
-                    <img src="https://i.ytimg.com/vi/PJ_zomNMK_s/maxresdefault.jpg" />
-                </div>
-                <div class="item">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQI6nUmObt62eDkqNSmIvCN_KkQExtbpJmUbVx_eTh_Y3v3r-Jw" />
-                </div>
-            </div>
+            @endforeach
+            </div>            
         </div>
         <div class="col-md-6">
             <div class="product-dtl">
                 <div class="product-info">
-                    <div class="product-name">Variable Product</div>
+                    <div class="product-name">{{ $product->product_name}}</div>
                     <div class="reviews-counter">
                         <div class="rate">
                             <input type="radio" id="star5" name="rate" value="5" checked />
@@ -115,22 +83,24 @@
                         </div>
                         <span>3 Reviews</span>
                     </div>
-                    <div class="brand-section">
-                        <div class="brand-name">Brand: MyBrand</div>
-                    </div>
                 </div>
 
-                <div class="product-price-discount"><span>$39.00</span><span class="line-through">$29.00</span>
+                <div class="product-price-discount"><span>${{$product -> price}}</span>
                 </div>
             </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p>{{ $product -> description}}</p>
             <div class="row">
 
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label>Trạng thái:</label> Còn hàng
+                        <label>Status:</label> 
+                        @if($product->quantity == 0)
+                            Out of stock
+                        
+                        @else
+                            In stock
+                        @endif
+
                     </div>
                 </div>
             </div>
@@ -266,57 +236,55 @@
 </div>
 
 <footer>
-        <div class="content">
-          <div class="top">
-            <div class="logo-details details left">
-                <i class="fa-solid fa-user-shield"></i>
-                <span class="logo_name">Prestigious service</span>
-            </div>
-            <div class="logo-details detail-center">
-                <i class="fa-solid fa-repeat"></i>
-                <span class="logo_name">Return in 7 days</span>
-            </div>
-            <div class="logo-details detail-right">
-                <i class="fa-solid fa-truck-fast"></i>
-                <span class="logo_name">Transcontinental delivery</span>
-            </div>
-          </div>
-          <div class="link-boxes">
-            <ul class="box">
-              <li class="link_name">Contact Us</li>
-              <li class="info">1st Floor, C5 Building, THUY LOI University 175 TAY SON St, DONG DA Dist, HANOI VIETNAM</li>
-              <li class="email">Email: <a href="mailto:techtitan@aptech.vn">techtitan@aptech.vn</a></li>
-            </ul>
-            <ul class="box">
-              <li class="link_name">Account management</li>
-              <li><a href="#">Create an Account / Sign In</a></li>
-              <li><a href="#">Forgot password</a></li>
-              <li><a href="#">Purchase history</a></li>
-              <li><a href="#">Track My Shipment</a></li>
-            </ul>
-            <ul class="box">
-              <li class="link_name">Our Company</li>
-              <li><a href="#">About Us</a></li>
-              <li><a href="">List of products</a></li>
-            </ul>
-            <ul class="box">
-              <li class="link_name">Find us on social:</li>
-              <li class="contact face"><a href="https://www.facebook.com/aptech.vn"><i class="fa-brands fa-facebook"></i></a></li>
-              <li class="contact twit"><a href="https://twitter.com/fpt_aptech"><i class="fa-brands fa-square-twitter"></i><span></span></a></li>
-              <li class="contact inst"><a href="https://www.instagram.com/aptech.vn/"><i class="fa-brands fa-square-instagram"></i><span></span></a></li>
-              <li class="contact yout"><a href="https://www.youtube.com/@AprotrainAptech"><i class="fa-brands fa-square-youtube"></i><span></span></a></li>
-            </ul>
-          </div>
+    <div class="content">
+      <div class="top">
+        <div class="logo-details details left">
+            <i class="fa-solid fa-user-shield"></i>
+            <span class="logo_name">Prestigious service</span>
         </div>
-        <div class="bottom-details">
-          <div class="bottom_text">
-            <span class="copyright_text">Copyright © 2023 <a href="mailto:techtitan@aptech.vn"> techtitan@aptech.vn.</a>Lavarel</span>
-            <span class="main_logo">
-              <a href=""><h2><i class="fa-solid fa-seedling"></i> TECHTITAN</h2></a>
-            </span>
-          </div>
+        <div class="logo-details detail-center">
+            <i class="fa-solid fa-repeat"></i>
+            <span class="logo_name">Return in 7 days</span>
         </div>
-      </footer> 
+        <div class="logo-details detail-right">
+            <i class="fa-solid fa-truck-fast"></i>
+            <span class="logo_name">Transcontinental delivery</span>
+        </div>
+      </div>
+      <div class="link-boxes">
+        <ul class="box">
+          <li class="link_name">Contact Us</li>
+          <li class="info">1st Floor, C5 Building, THUY LOI University 175 TAY SON St, DONG DA Dist, HANOI VIETNAM</li>
+          <li class="email">Email: <a href="mailto:techtitan@aptech.vn">techtitan@aptech.vn</a></li>
+        </ul>
+        <ul class="box">
+          <li class="link_name">Account management</li>
+          <li><a href="{{ route('user.personal_information') }}">My account</a></li>
+          <li><a href="{{ route('user.my_order') }}">Purchase history</a></li>
+        </ul>
+        <ul class="box">
+          <li class="link_name">Our Company</li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="{{ route('category.products', ['categoryName' => 'All']) }}">List of products</a></li>
+        </ul>
+        <ul class="box">
+          <li class="link_name">Find us on social:</li>
+          <li class="contact face"><a href="https://www.facebook.com/aptech.vn"><i class="fa-brands fa-facebook"></i></a></li>
+          <li class="contact twit"><a href="https://twitter.com/fpt_aptech"><i class="fa-brands fa-square-twitter"></i><span></span></a></li>
+          <li class="contact inst"><a href="https://www.instagram.com/aptech.vn/"><i class="fa-brands fa-square-instagram"></i><span></span></a></li>
+          <li class="contact yout"><a href="https://www.youtube.com/@AprotrainAptech"><i class="fa-brands fa-square-youtube"></i><span></span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom-details">
+      <div class="bottom_text">
+        <span class="copyright_text">Copyright © 2023 <a href="mailto:techtitan@aptech.vn"> techtitan@aptech.vn.</a>Lavarel</span>
+        <span class="main_logo">
+          <a href=""><h2><i class="fa-solid fa-seedling"></i> TECHTITAN</h2></a>
+        </span>
+      </div>
+    </div>
+  </footer>
 
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

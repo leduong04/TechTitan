@@ -1,0 +1,76 @@
+body {
+    background-image: url("../../image/sign.jpg") ; 
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-position: center; 
+    background-attachment: fixed;
+
+}
+.d-flex{
+    display: flex;
+}
+
+.text{
+
+    text-align: center;
+    margin: auto;
+    color: white;
+    font-size: 30px;
+    
+}
+.container{
+    width: 70%;
+    margin: auto;
+    margin-top: 150px;
+    margin-bottom: 150px;
+}
+.image{
+  
+    width: 50%;
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-image: url("../../image/sign2.jpg");
+ 
+}
+.image img{
+    width: 100%;
+}
+.sign{
+    width: 50%;
+    background-color: white;
+    background-color: rgb(54, 55, 55);
+}
+.item{
+    margin: auto;
+    width: 80%;
+    margin-bottom: 25px;
+    
+}
+input{
+    width: 100%;
+    margin-top: 25px;
+    height: 50px;
+    font-size: 16px;
+    background-color:  rgb(54, 55, 55);
+    color: white;
+    border: none;
+}
+input:focus{
+    outline: none
+}
+.btn{
+    width: 80%;
+    margin: auto;
+    margin-bottom: 50px;
+}
+.btn button{
+    width: 100%;
+    height: 40px;
+    border: none;
+    font-size: 16px;
+    border-radius: 6px;
+}
+.btn button:hover{
+    background-color: green;
+    color: white;
+}
