@@ -4,62 +4,41 @@ namespace App\Http\Controllers\AdminController;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\orders;
+use App\Models\product;
+use App\Models\User;
+use Carbon\Carbon;
+
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $totalOrders = Orders::count();
+        $totalRevenue = Orders::sum('total_pay');
+        $totalProducts = Product::count();
+        $totalUsers = User::count();
+
+        $recentOrders = Orders::orderBy('current_at', 'desc')->take(6)->get();
+
+
+        $topSellingProducts = Product::orderBy('quantity', 'desc')->take(6)->get();
+
+        foreach ($recentOrders as $order) {
+            $order->formattedDate = Carbon::createFromFormat('Y-m-d H:i:s', $order->current_at)->format('d M Y');
+        }
+    
+
+
+        return view('admin.home', compact('totalOrders', 'totalRevenue', 'totalProducts', 'totalUsers', 'recentOrders', 'topSellingProducts'));
+        // return view('admin.home', compact('totalOrders', 'totalRevenue', 'totalProducts', 'totalUsers', 'recentOrders'));
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        return view('/Admin/home');
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+    
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
+    // Các phương thức khác
 }

@@ -30,7 +30,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin/home', [HomeController::class,'create'])->name('admin.home');
+// Route::get('/admin/home', [HomeController::class,'index'])->name('admin.home');
 
 Route::get('/my_order',[My_order::class,'create'])->name('user.my_order');
 
@@ -65,3 +65,9 @@ Route::get('/add', function () {
     return view('/Admin/add_product');
 });
 
+
+    Route::get('/admin/home', [HomeController::class, 'index'])->name('admin.home');
+    
+    
+
+// });

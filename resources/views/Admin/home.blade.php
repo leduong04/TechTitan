@@ -17,17 +17,17 @@
 
 @endsection
 
-@section('content')
 
+@section('content')
 <main>
-	<div class="home-content">
+    <div class="home-content">
         <div class="overview-boxes">
             <div class="box">
                 <div class="left-side">
                     <div class="box_topic">
                         Total orders
                     </div>
-                    <div class="number">40,876</div>
+                    <div class="number">{{ $totalOrders }}</div>
                     <div class="indicator">
                         <i class="bx bx-up-arrow-alt"></i>
                         <span class="text">Latest data</span>
@@ -38,9 +38,9 @@
             <div class="box">
                 <div class="left-side">
                     <div class="box_topic">
-                    Total revenue
+                        Total revenue
                     </div>
-                    <div class="number">40,876</div>
+                    <div class="number">${{ $totalRevenue }}</div>
                     <div class="indicator">
                         <i class="bx bx-up-arrow-alt"></i>
                         <span class="text">Latest data</span>
@@ -53,7 +53,7 @@
                     <div class="box_topic">
                         Total products
                     </div>
-                    <div class="number">40,876</div>
+                    <div class="number">{{ $totalProducts }}</div>
                     <div class="indicator">
                         <i class="bx bx-up-arrow-alt"></i>
                         <span class="text">Latest data</span>
@@ -66,7 +66,7 @@
                     <div class="box_topic">
                         Total users
                     </div>
-                    <div class="number">40,876</div>
+                    <div class="number">{{ $totalUsers }}</div>
                     <div class="indicator">
                         <i class="bx bx-up-arrow-alt"></i>
                         <span class="text">Latest data</span>
@@ -76,6 +76,7 @@
             </div>
         </div>
 
+        <!-- ... rest of the HTML ... -->
         <!-- sales-content -->
         <div class="sales-boxes">
             <div class="recent-sale box">
@@ -83,50 +84,40 @@
                 <div class="sales-details">
                     <ul class="details">
                         <li class="topic"><a href="#"><b>Date</b></a></li>
-                        <li><a href="#">02 Jan 2021</a></li>
-                        <li><a href="#">02 Jan 2021</a></li>
-                        <li><a href="#">02 Jan 2021</a></li>
-                        <li><a href="#">02 Jan 2021</a></li>
-                        <li><a href="#">02 Jan 2021</a></li>
-                        <li><a href="#">02 Jan 2021</a></li>
+                        @foreach ($recentOrders as $order)
+                        <li><a href="#">{{ $order->current_at}}</a></li>
+                        @endforeach
                     </ul>
                     <ul class="details">
                         <li class="topic"><a href="#"><b>Customer</b></a></li>
-                        <li><a href="#">Anna</a></li>
-                        <li><a href="#">John</a></li>
-                        <li><a href="#">Ben</a></li>
-                        <li><a href="#">Justin</a></li>
-                        <li><a href="#">Rose</a></li>
-                        <li><a href="#">Lisa</a></li>
+                        @foreach ($recentOrders as $order)
+                        <li><a href="#">{{ $order->fullname }}</a></li>
+                        @endforeach
                     </ul>
                     <ul class="details">
                         <li class="topic"><a href="#"><b>Processing status</b></a></li>
-                        <li><a href="#">Unprocessed</a></li>
-                        <li><a href="#">Unprocessed</a></li>
-                        <li><a href="#">Unprocessed</a></li>
-                        <li><a href="#">Unprocessed</a></li>
-                        <li><a href="#">Unprocessed</a></li>
-                        <li><a href="#">Processed</a></li>
+                        @foreach ($recentOrders as $order)
+                        <li><a href="#">{{ $order->status == 0 ? 'Unprocessed' : 'Processed' }}</a></li>
+                        @endforeach
                     </ul>
                     <ul class="details">
                         <li class="topic"><a href="#"><b>Total pay</b></a></li>
-                        <li><a href="#">100$</a></li>
-                        <li><a href="#">100$</a></li>
-                        <li><a href="#">100$</a></li>
-                        <li><a href="#">100$</a></li>
-                        <li><a href="#">100$</a></li>
-                        <li><a href="#">100$</a></li>
+                        @foreach ($recentOrders as $order)
+                        <li><a href="#">{{ $order->total_pay }}</a></li>
+                        @endforeach
                     </ul>
                 </div>
                 <div class="button">
                     <a href="#">See all</a>
                 </div>
             </div>
+            <!-- ... rest of the sales boxes ... -->
 
-            <!-- Right-Side -->
             <div class="top-sales box">
                 <div class="title">Top Selling Product</div>
                 <ul>
+                    @foreach ($topSellingProducts as $product)
+
                     <li>
                         <a href="">
                             <img src="https://daikin.vn/upload_images/images/2018/04/27/4.jpg" alt="">
@@ -134,49 +125,21 @@
                         </a>
                         <span class="price">$100</span>
                     </li>
+                    @endforeach
+
                     <li>
-                        <a href="">
-                            <img src="https://daikin.vn/upload_images/images/2018/04/27/4.jpg" alt="">
-                            <span class="product_name">Máy lạnh Casper Inverter 1.5HP GC-12IS35</span>
-                        </a>
-                        <span class="price">$100</span>
-                    </li>
-                    <li>
-                        <a href="">
-                            <img src="https://daikin.vn/upload_images/images/2018/04/27/4.jpg" alt="">
-                            <span class="product_name">Máy lạnh Casper Inverter 1.5HP GC-12IS35</span>
-                        </a>
-                        <span class="price">$100</span>
-                    </li>
-                    <li>
-                        <a href="">
-                            <img src="https://daikin.vn/upload_images/images/2018/04/27/4.jpg" alt="">
-                            <span class="product_name">Máy lạnh Casper Inverter 1.5HP GC-12IS35</span>
-                        </a>
-                        <span class="price">$100</span>
-                    </li>
-                    <li>
-                        <a href="">
-                            <img src="https://daikin.vn/upload_images/images/2018/04/27/4.jpg" alt="">
-                            <span class="product_name">Máy lạnh Casper Inverter 1.5HP GC-12IS35</span>
-                        </a>
-                        <span class="price">$100</span>
-                    </li>
-                    <li>
-                        <a href="">
-                            <img src="https://daikin.vn/upload_images/images/2018/04/27/4.jpg" alt="">
-                            <span class="product_name">Điều hòa</span>
-                        </a>
-                        <span class="price">$100</span>
-                    </li>
                 </ul>
             </div>
         </div>
+       
+
+    </div>
     </div>
 </main>
-
-
 @endsection
+
+
+
 
 @section('js')
 <script src="{{ asset('assets/js/js_admin/navbar_sidebar.js')}}"></script>
