@@ -5,6 +5,7 @@ namespace App\Http\Controllers\UserController;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\orders;
+use Illuminate\Support\Facades\Auth;
 
 class My_order extends Controller
 {
@@ -22,7 +23,9 @@ class My_order extends Controller
     public function create()
     {
         $orders = orders::all();
-        return view('/User/my_order', compact('orders'));
+        $user = Auth::user();
+        return view('/User/my_order', compact('orders','user'));
+
     }
 
     /**

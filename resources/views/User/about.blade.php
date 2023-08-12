@@ -1,32 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/css_user/about.css')}}">
+     <!-- Box-icon -->
+	 <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <!-- CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/css_user/navlord.css')}}">
 	<link rel="stylesheet" href="{{ asset('assets/css/css_user/footer.css')}}">
-
-
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/css_user/contact_us.css')}}">
-    <style>
-    #stay_here {
-        background-color: #fff;
-    }
-
-    #stay_here a {
-        color: #005745 !important;
-    }
-</style>
+    <!-- font-awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+
+<div class="container">
 <nav class="navbard">
         <div class="containerd">
         <a class="name_web" href="{{ route('user.home_page') }}"><h2 class="h2n"><i class="fa-solid fa-seedling"></i> TECHTITAN</h2></a>
@@ -35,7 +25,7 @@
             <input type="search" placeholder="Search">
         </div>
         <div class="contentd">
-            <a href="{{ route('cart.list') }}" class="cart"><i class="fa-solid fa-basket-shopping"></i><span class="my-content"> Shopping Carts {{Cart::getTotalQuantity()}}</span></a>
+            <a href="{{ route('cart.list') }}" class="cart"><i class="fa-solid fa-basket-shopping"></i><span class="my-content"> Shopping Carts</span> {{Cart::getTotalQuantity()}}</a>
             <div class="dropdown-hotline">
             <a href="{{ route('user.contact_us')}}" class="hotline"><i class="fa-solid fa-phone-volume"></i><span class="my-content"> ContactUs</span></a>
             <div class="hotl-btn">
@@ -80,57 +70,85 @@
                 </div>
             </div>
         </nav>
+        <section class="image_bar">
+        <div class="chinh">
+          <div class="image"><img src="https://cdn.shopify.com/s/files/1/0059/8835/2052/files/hp-box1-privacy-trees-6_c93a2d8d-ec65-4345-b4c4-4c51d36ee332.jpg?v=1648211406" alt=""></div>
+          <div class="bar_img">
+            <h1><i class="fa-solid fa-seedling"></i> Welcome to TECHTITAN</h1>
+            <span>Hi! We're <i class="fa-solid fa-seedling"></i> TECHTITAN, and we were built with a single mission in mind - to
+                deliver superior trees and plants that you can count on, directly to your door.</span> <br>
+            <a href="{{ route('user.home_page') }}"><button>Shop Now</button></a>
+          </div>
+        </div>
+      </section>
 
-    <div class="container" id="form">
-    <div class="contact_form row ">
-        <div class="form col-md-7  ">
-            <h2>Contact us</h2>
-            <div class="row ">
-                <div class="col-md-6 ">
-                    <div id="label" for="">Full Name</div>
-                    <input type="text" placeholder="Full name">
+    <section class="main">
+        <div class="about">
+            <div class="information">
+                <div class="left">
+                    <div class="top">
+                        <span>
+                            Thanks for stopping by! We're TECHTITAN, and we're VIETNAM's #1 
+                            online nursery. We started selling trees in our backyard in 2023, 
+                            and we still do (only now, our backyard is nearly 100 acres). We pioneered the concept
+                            of farm-to-backyard plants, and made it possible to grow happier, healthier and easier 
+                            than the garden center or big box store.
+                        </span>
+                    </div>
+                    <div class="bot">
+                        <span>
+                            What sets us apart? We are as close to the farm as it gets. Our plants are 
+                            sourced from the best growers across the country, cared for by our in-house 
+                            Plant Experts and shipped straight to your yard. This means you're shopping 
+                            straight from the source and guaranteed (yes, we guarantee them!) fresh, 
+                            thriving plants. Forget the leftovers—with us, you get first dibs on the biggest,
+                            freshest selection of privacy trees, shrubs, shade trees, fruits, flowering 
+                            trees, house plants, perennials, tropicals and more, all from the comfort of your home.
+                        </span>
+                    </div>
                 </div>
-                <div class="col-md-6 ">
-                    <div id="label" for="">Email</div>
-                    <input type="text" placeholder="Email">
+                <div class="right">
+                    <div class="inf">
+                        <img src="https://www.fast-growing-trees.com/cdn/shop/files/20230325_FGT_S29_ResidentialDiggingWithModels_02998.jpg?v=1682622843&width=675" alt="">
+                    </div>
                 </div>
-
-                <div class="col-md-12 ">
-                    <div id="label" for="">Message</div>
-                    <textarea placeholder="Message" name="" id=""></textarea>
+            </div>
+            <div class="demo">
+              <img src="https://www.fast-growing-trees.com/cdn/shop/files/001-sprout_small.png?v=1651667791" alt=""> <br>
+              <span>Healthier, well-developed root systems grown and shipped in nutrient-rich soil.</span>
+            </div>
+            <div class="best">
+              <div class="content">
+                <div class="left">
+                  <div class="top">
+                    <span>
+                      No matter where you're at in your planting journey, what your yard looks like or what you're dreaming it will look like, we've got you covered—our Plant Experts and care guides are always here to help you troubleshoot or plan your next dig.
+                    </span>
+                  </div>
+                  <div class="bot">
+                    <span>
+                      Contact our specialists for one-on-one support, and check out our Resource Center for how-to guides, tips, and recommendations.
+                    </span>
+                    </div>
+                  <div class="siu">
+                    <h1>Not sure where to start? Get to know our best sellers!</h1>
+                  </div>
                 </div>
-                <div class="submit">
-                    <button type="submit">Send Message</button>
+                <div class="right">
+                  <iframe width="560" height="315" src="https://www.youtube.com/embed/e4Tk-kcOmUA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
-
+              </div>
+            </div>
+            <div class="demo">
+              <img src="https://www.fast-growing-trees.com/cdn/shop/files/003-landscape_small.png?v=1651667857" alt=""> <br>
+              <span>The ideal plants and trees for your climate and landscape needs.</span>
             </div>
         </div>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.661206405767!2d105.8237424760264!3d21.006213588551056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ad744eb9a567%3A0x86ebcd89ee0bda7b!2zMTc1IFAuIFTDonkgU8ahbiwgVHJ1bmcgTGnhu4d0LCDEkOG7kW5nIMSQYSwgSMOgIE7hu5lpLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1685617048543!5m2!1svi!2s" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="col-md-5 px-0"></iframe>
-    </div>
-</div>
-<div class="container" id="icon">
-    <div class="contact">
-        <div class="row mx-0">
-            <div class="col-md-3 px-0 " id="iconvstext">
-                <div class="icon"><span class="fa fa-map-marker d-flex align-items-center justify-content-center"></span></div>
-                <div class="text">Address: <a href="#">175 Tây Sơn, Đống Đa, Hà Nội</a></div>
-            </div>
-            <div class="col-md-3 px-0 " id="iconvstext">
-                <div class="icon"><span class="fa fa-phone d-flex align-items-center justify-content-center "></span></div>
-                <div class="text">Phone: <a href="#">+8490999999999</a></div>
-            </div>
-            <div class="col-md-3 px-0 " id="iconvstext">
-                <div class="icon"><span class="fa fa-paper-plane d-flex align-items-center justify-content-center"></span></div>
-                <div class="text">Email: <a href="#">TechTitan@gmail.com</a></div>
-            </div>
-            <div class="col-md-3 px-0 " id="iconvstext">
-                <div class="icon"><span class="fa fa-globe d-flex align-items-center justify-content-center"></span></div>
-                <div class="text">Website: <a href="#">TechTitan.com</a></div>
-            </div>
-        </div>
-    </div>
-</div>
-<footer>
+    </section>
+
+
+
+    <footer>
     <div class="content">
       <div class="top">
         <div class="logo-details details left">
@@ -180,10 +198,7 @@
       </div>
     </div>
   </footer>
-      <script src="{{ asset('assets/js/js_admin/nav.js')}}"></script>  
+
+    <script src="{{ asset('assets/js/js_admin/about.js')}}"></script>
 </body>
 </html>
-
-
-
-

@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+
 <div class="container">
 <nav class="navbard">
         <div class="containerd">
@@ -24,24 +25,51 @@
             <input type="search" placeholder="Search">
         </div>
         <div class="contentd">
-            <a href="{{ route('user.cart') }}" class="cart"><i class="fa-solid fa-basket-shopping"></i><span class="my-content"> Shopping Carts</span></a>
+            <a href="{{ route('cart.list') }}" class="cart"><i class="fa-solid fa-basket-shopping"></i><span class="my-content"> Shopping Carts</span> {{Cart::getTotalQuantity()}}</a>
             <div class="dropdown-hotline">
-            <a href="{{ route('user.contact_us')}}" class="hotline"><i class="fa-solid fa-phone-volume"></i><span class="my-content"> Hotline</span></a>
+            <a href="{{ route('user.contact_us')}}" class="hotline"><i class="fa-solid fa-phone-volume"></i><span class="my-content"> ContactUs</span></a>
             <div class="hotl-btn">
                 <a href="mailto:techtitan@aptech.vn" class="em"><span><i class="fa-regular fa-envelope"></i> Email : <span class="inf-btn">techtitan@aptech.vn</span></span></a>
                 <a href="#" class="time"><span><i class="fa-regular fa-clock"></i> Time : <span class="inf-btn">8h00 - 19h00</span></span></a>
             </div>
             </div>
-            <div class="dropdown-account">
-            <a href="" class="account"><i class="fa-solid fa-circle-user"></i><span class="my-content"> Account</span></a>
-            <div class="acc-btn">
-                <a href="{{ route('user.personal_information') }}" class="ai"><span>Account Information</span></a>
-                <a href="{{ route('user.my_order') }}" class="mo"><span>My Order</span></a>
+            @guest
+                            @if (Route::has('login'))
+                                
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                
+                            @endif
+
+                            @if (Route::has('register'))
+
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            @endif
+                        @else
+                            
+                            <div class="dropdown-account">
+                                <a  class="account" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
+                                <div class="acc-btn">
+                                    <a href="{{ route('user.personal_information') }}" style="text-decoration:none"><span>Account Information</span></a>
+                                    <a href="{{ route('user.my_order') }}" style="text-decoration:none"><span>My Order</span></a>
+                                    <a  href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();" style="text-decoration:none">
+                                        <span>{{ __('Logout') }}</span>
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+          </div>
+                            </div>
+                                
+                        @endguest 
+                    </ul>
+                </div>
             </div>
-            </div>
-        </div>
-        </div>
-    </nav>
+        </nav>
 
 		<main>
 			<div class="breadcrumb">
@@ -55,58 +83,60 @@
 			<div class="account-page">
 				<div class="profile">
 					<div class="profile-img">
-						<img src="https://anphupet.com/wp-content/uploads/2020/11/Cho-Bulldog-Anh.jpg">
-						<h2>Trung Thanh</h2>
-						<p>trungthanh@gmail.com</p>
+						<img src="{{ $user->img_link }}">
+						<h2>{{ $user->name }}</h2>
+						<p>{{ $user->email }}</p>
 					</div>
 					<ul>
 						<li><a href="{{ route('user.personal_information') }}" class="active">Account <span>></span></a></li>
 						<li><a href="{{ route('user.my_order') }}">My Orders <span>></span></a></li>
-						<li><a href="#">Change Password <span>></span></a></li>
-						<li><a href="#">Logout <span>></span></a></li>
+						<li><a href="{{ route('user.change_password') }}">Change Password <span>></span></a></li>
+						<li><a href="{{ route('logout') }}"onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();" style="text-decoration:none">Logout <span>></span></a></li>
 					</ul>
 				</div>
 				<div class="account-detail">
 					<h2>Account</h2>
 					<div class="billing-detail">					
-						<form class="checkout-form">
+						<form class="checkout-form" action="{{ route('user.update_profile') }}" method="POST">
+              @csrf
 							<div class="form-inline">
 								<div class="form-group">
 									<label>Full Name</label>
-									<input type="text" id="fname" name="fname" value="Nguyen Le Trung Thanh">
+									<input type="text" id="fname" name="fname" value="{{ $user->name }}">
 								</div>
 								<div class="form-group">
 									<label>Email</label>
-									<input type="text" id="email" name="email" value="trungthanhcva2206@gmail.com">
+									<input type="text" id="email" name="email" value="{{ $user->email }}">
 								</div>
 							</div>
 							<div class="form-inline">
 								<div class="form-group">
 									<label>Gender</label>
-									<select id="gender" name="gender">
-										<option selected>---Select a Gender---</option>
-										<option value="Male">Male</option>
-                                        <option value="Female">Female</option>
-									</select>
-								</div>
+                    <select id="gender" name="gender">
+                        <option value="Male" @if($user->gender == 'Male') selected @endif>Male</option>
+                        <option value="Female" @if($user->gender == 'Female') selected @endif>Female</option>
+                    </select>
+                </div>
 							</div>
 							<div class="form-group">
 								<label>Address</label>
-								<textarea style="resize:none" id="address" name="address" rows="3">xyz area, street 24 </textarea>
+								<textarea style="resize:none" id="address" name="address" rows="3">{{ $user->address }} </textarea>
 							</div>
 							<div class="form-inline">					
-								<div class="form-group">
-									<label>Date of birth</label>
-									<input type="text" id="date" name="date" minlength="11" maxlength="11" value="2004/06/22">
-								</div>
+              <div class="form-group">
+                  <label for="date">Date of Birth</label>
+                  <input type="date" id="date" name="date" value="{{ $user->date_of_birth }}" class="form-control">
+              </div>
 								<div class="form-group">
 									<label>Phone</label>
-									<input type="text" id="phone" name="phone" minlength="11" maxlength="11" value="555-XXXXXXX">
+									<input type="text" id="phone" name="phone" minlength="11" maxlength="11" value="{{ $user->phone}}">
 								</div>
 							</div>
 							<div class="form-group">
 								<label></label>
 								<input type="submit" id="update" name="update" value="Update">
+                <div id="updateMessage" class="alert alert-success" style="display: none;"></div>
 							</div>
 						</form>		
 					</div>
@@ -142,7 +172,7 @@
         </ul>
         <ul class="box">
           <li class="link_name">Our Company</li>
-          <li><a href="#">About Us</a></li>
+          <li><a href="{{ route('about') }}">About Us</a></li>
           <li><a href="{{ route('category.products', ['categoryName' => 'All']) }}">List of products</a></li>
         </ul>
         <ul class="box">
@@ -165,5 +195,21 @@
   </footer>
 	</div>
 	<script src="{{ asset('assets/js/js_admin/nav.js')}}"></script>
+  <script>
+    document.getElementById('update').addEventListener('click', function() {
+        // Thực hiện các thao tác cập nhật dữ liệu ở đây (hoặc gọi API)
+
+        // Sau khi cập nhật thành công, hiển thị thông báo
+        var updateMessage = document.getElementById('updateMessage');
+        updateMessage.style.display = 'block';
+        updateMessage.innerHTML = 'Thông tin đã được cập nhật thành công.';
+        
+        // Tự động ẩn thông báo sau một khoảng thời gian (ví dụ: 5 giây)
+        setTimeout(function() {
+            updateMessage.style.display = 'none';
+        }, 5000); // Thời gian ẩn thông báo sau 5 giây (5000 milliseconds)
+    });
+</script>
+
 </body>
 </html>

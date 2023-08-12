@@ -1,16 +1,14 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
+@extends('layouts.app')
+@section('css')
     <!-- Box-icon -->
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/css_user/small.css')}}">
     <!-- font-awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
+    @endsection
+
+@section('small_menu')
   <div id="select_menu" class="mnsl">
     <div class="menunow">
       <div class="mn"><span>MENU</span></div>
@@ -25,33 +23,8 @@
     </div>
     <div class="out" id="outl"><div class="close"><span>Click here to close</span></div></div>
   </div>
-    <nav class="navbar">
-        <div class="container">
-          <a class="name_web" href="{{ route('user.home_page') }}"><h2><i class="fa-solid fa-seedling"></i> TECHTITAN</h2></a>
-          <div class="search-bar">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="search" placeholder="Search">
-          </div>
-          <div class="content">
-            <a href="{{ route('user.cart') }}" class="cart"><i class="fa-solid fa-basket-shopping"></i><span class="my-content"> Shopping Carts</span></a>
-            <div class="dropdown-hotline">
-              <a href="{{ route('user.contact_us')}}" class="hotline"><i class="fa-solid fa-phone-volume"></i><span class="my-content"> Hotline</span></a>
-              <div class="hotl-btn">
-                <a href="mailto:techtitan@aptech.vn"><span><i class="fa-regular fa-envelope"></i> Email : <span class="inf-btn">techtitan@aptech.vn</span></span></a>
-                <a href="#"><span><i class="fa-regular fa-clock"></i> Time : <span class="inf-btn">8h00 - 19h00</span></span></a>
-              </div>
-            </div>
-            <div class="dropdown-account">
-              <a href="" class="account"><i class="fa-solid fa-circle-user"></i><span class="my-content"> Account</span></a>
-              <div class="acc-btn">
-                <a href="{{ route('user.personal_information') }}"><span>Account Information</span></a>
-                <a href="{{ route('user.my_order') }}"><span>My Order</span></a>
-              </div>
-            </div>
-          </div>
-        </div>
-    </nav>
-
+  @endsection
+    @section('content')
     <section class="image_bar">
       <div class="chinh">
         <div class="image"><img src="http://getwallpapers.com/wallpaper/full/2/1/8/1058882-download-zen-garden-wallpaper-1920x1080-for-iphone.jpg" alt=""></div>
@@ -66,7 +39,7 @@
     <section class="main">
       <div class="content">
         <span class="home">Home<span class="xs">>></span></span><span>{{ $categoryName }}</span>
-        <a href="" id="showmenu" class="menu_show"><span><i class="fa-solid fa-bars"></i> SELECT MENU</span></a>
+        <a href="" id="showmenu" class="menu_show"><span><i class="fa-solid fa-bars"></i>SELECT MENU</span></a>
       </div>
       @foreach ($products as $product)
       <div class="prd">
@@ -119,7 +92,7 @@
         </ul>
         <ul class="box">
           <li class="link_name">Our Company</li>
-          <li><a href="#">About Us</a></li>
+          <li><a href="{{ route('about') }}">About Us</a></li>
           <li><a href="{{ route('category.products', ['categoryName' => 'All']) }}">List of products</a></li>
         </ul>
         <ul class="box">
@@ -142,5 +115,4 @@
   </footer>
 
     <script src="{{ asset('assets/js/js_admin/small.js')}}"></script>
-</body>
-</html>
+    @endsection

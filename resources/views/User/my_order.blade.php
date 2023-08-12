@@ -28,24 +28,52 @@
             <input type="search" placeholder="Search">
         </div>
         <div class="contentd">
-            <a href="{{ route('user.cart') }}" class="cart"><i class="fa-solid fa-basket-shopping"></i><span class="my-content"> Shopping Carts</span></a>
+            <a href="{{ route('cart.list') }}" class="cart"><i class="fa-solid fa-basket-shopping"></i><span class="my-content"> Shopping Carts</span> {{Cart::getTotalQuantity()}}</a>
             <div class="dropdown-hotline">
-            <a href="{{ route('user.contact_us')}}" class="hotline"><i class="fa-solid fa-phone-volume"></i><span class="my-content"> Hotline</span></a>
+            <a href="{{ route('user.contact_us')}}" class="hotline"><i class="fa-solid fa-phone-volume"></i><span class="my-content"> ContactUs</span></a>
             <div class="hotl-btn">
                 <a href="mailto:techtitan@aptech.vn" class="em"><span><i class="fa-regular fa-envelope"></i> Email : <span class="inf-btn">techtitan@aptech.vn</span></span></a>
                 <a href="#" class="time"><span><i class="fa-regular fa-clock"></i> Time : <span class="inf-btn">8h00 - 19h00</span></span></a>
             </div>
             </div>
-            <div class="dropdown-account">
-            <a href="" class="account"><i class="fa-solid fa-circle-user"></i><span class="my-content"> Account</span></a>
-            <div class="acc-btn">
-                <a href="{{ route('user.personal_information') }}" class="ai"><span>Account Information</span></a>
-                <a href="{{ route('user.my_order') }}" class="mo"><span>My Order</span></a>
+            @guest
+                            @if (Route::has('login'))
+                                
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                
+                            @endif
+
+                            @if (Route::has('register'))
+
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            @endif
+                        @else
+                            
+                            <div class="dropdown-account">
+                                <a  class="account" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
+                                <div class="acc-btn">
+                                    <a href="{{ route('user.personal_information') }}" style="text-decoration:none"><span>Account Information</span></a>
+                                    <a href="{{ route('user.my_order') }}" style="text-decoration:none"><span>My Order</span></a>
+                                    <a  href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();" style="text-decoration:none">
+                                        <span>{{ __('Logout') }}</span>
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+          </div>
+                            </div>
+                                
+                        @endguest 
+                    </ul>
+                </div>
             </div>
-            </div>
-        </div>
-        </div>
-    </nav>
+        </nav>
+
 		<main>
 			<div class="breadcrumb">
 				<ul>
@@ -61,15 +89,16 @@
 			<div class="account-page">
 				<div class="profile">
 					<div class="profile-img">
-						<img src="https://anphupet.com/wp-content/uploads/2020/11/Cho-Bulldog-Anh.jpg">
-						<h2>Trung Thanh</h2>
-						<p>trungthanh@gmail.com</p>
+						<img src="{{$user -> img_link}}">
+						<h2>{{$user -> name}}</h2>
+						<p>{{$user -> email}}</p>
 					</div>						
 					<ul>
 						<li><a href="{{ route('user.personal_information') }}">Account <span>></span></a></li>
 						<li><a href="{{ route('user.my_order') }}" class="active">My Orders <span>></span></a></li>
-						<li><a href="#">Change Password <span>></span></a></li>
-						<li><a href="#">Logout <span>></span></a></li>
+						<li><a href="{{ route('user.change_password') }}">Change Password <span>></span></a></li>
+						<li><a href="{{ route('logout') }}"onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();" style="text-decoration:none">Logout <span>></span></a></li>
 					</ul>
 				</div>
 				<div class="account-detail">					
@@ -136,7 +165,7 @@
         </ul>
         <ul class="box">
           <li class="link_name">Our Company</li>
-          <li><a href="#">About Us</a></li>
+          <li><a href="{{ route('about') }}">About Us</a></li>
           <li><a href="{{ route('category.products', ['categoryName' => 'All']) }}">List of products</a></li>
         </ul>
         <ul class="box">

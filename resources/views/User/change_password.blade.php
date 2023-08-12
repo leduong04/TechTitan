@@ -1,33 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/css_user/navlord.css')}}">
 	<link rel="stylesheet" href="{{ asset('assets/css/css_user/footer.css')}}">
+    <!-- font-awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/css_user/contact_us.css')}}">
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/css_user/my_oder.css')}}">
     <style>
-    #stay_here {
-        background-color: #fff;
+    .form-group {
+        margin-bottom: 20px;
     }
 
-    #stay_here a {
-        color: #005745 !important;
+    label {
+        font-weight: bold;
+    }
+
+    input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .changePassword {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .changePassword:hover {
+        background-color: #0056b3;
     }
 </style>
+
+	
+
 </head>
 <body>
-<nav class="navbard">
+	<div class="container">
+	<nav class="navbard">
         <div class="containerd">
         <a class="name_web" href="{{ route('user.home_page') }}"><h2 class="h2n"><i class="fa-solid fa-seedling"></i> TECHTITAN</h2></a>
         <div class="search-bard">
@@ -35,7 +59,7 @@
             <input type="search" placeholder="Search">
         </div>
         <div class="contentd">
-            <a href="{{ route('cart.list') }}" class="cart"><i class="fa-solid fa-basket-shopping"></i><span class="my-content"> Shopping Carts {{Cart::getTotalQuantity()}}</span></a>
+            <a href="{{ route('cart.list') }}" class="cart"><i class="fa-solid fa-basket-shopping"></i><span class="my-content"> Shopping Carts</span> {{Cart::getTotalQuantity()}}</a>
             <div class="dropdown-hotline">
             <a href="{{ route('user.contact_us')}}" class="hotline"><i class="fa-solid fa-phone-volume"></i><span class="my-content"> ContactUs</span></a>
             <div class="hotl-btn">
@@ -81,56 +105,75 @@
             </div>
         </nav>
 
-    <div class="container" id="form">
-    <div class="contact_form row ">
-        <div class="form col-md-7  ">
-            <h2>Contact us</h2>
-            <div class="row ">
-                <div class="col-md-6 ">
-                    <div id="label" for="">Full Name</div>
-                    <input type="text" placeholder="Full name">
-                </div>
-                <div class="col-md-6 ">
-                    <div id="label" for="">Email</div>
-                    <input type="text" placeholder="Email">
-                </div>
+		<main>
+			<div class="breadcrumb">
+				<ul>
+					<li><a href="{{ route('user.home_page') }}">Home</a></li>
+					<li> / </li>
+					<li><a href="{{ route('user.personal_information') }}">Account</a></li>
+					<li> / </li>
+					<li>Change Password</li>
+				</ul>
+			</div> <!-- End of Breadcrumb-->
 
-                <div class="col-md-12 ">
-                    <div id="label" for="">Message</div>
-                    <textarea placeholder="Message" name="" id=""></textarea>
-                </div>
-                <div class="submit">
-                    <button type="submit">Send Message</button>
-                </div>
+			
+			<div class="account-page">
+				<div class="profile">
+					<div class="profile-img">
+						<img src="{{$user -> img_link}}">
+						<h2>{{$user -> name}}</h2>
+						<p>{{$user -> email}}</p>
+					</div>						
+					<ul>
+						<li><a href="{{ route('user.personal_information') }}">Account <span>></span></a></li>
+						<li><a href="{{ route('user.my_order') }}">My Orders <span>></span></a></li>
+						<li><a href="{{ route('user.change_password') }}" class="active">Change Password <span>></span></a></li>
+						<li><a href="{{ route('logout') }}"onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();" style="text-decoration:none">Logout <span>></span></a></li>
+					</ul>
+				</div>
+                <div class="account-detail">
+					<h2>Change password</h2>
+					<div class="billing-detail">					
+                    <div class="card-body">
+                    @if(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                    @endif
 
-            </div>
-        </div>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.661206405767!2d105.8237424760264!3d21.006213588551056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ad744eb9a567%3A0x86ebcd89ee0bda7b!2zMTc1IFAuIFTDonkgU8ahbiwgVHJ1bmcgTGnhu4d0LCDEkOG7kW5nIMSQYSwgSMOgIE7hu5lpLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1685617048543!5m2!1svi!2s" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="col-md-5 px-0"></iframe>
-    </div>
-</div>
-<div class="container" id="icon">
-    <div class="contact">
-        <div class="row mx-0">
-            <div class="col-md-3 px-0 " id="iconvstext">
-                <div class="icon"><span class="fa fa-map-marker d-flex align-items-center justify-content-center"></span></div>
-                <div class="text">Address: <a href="#">175 Tây Sơn, Đống Đa, Hà Nội</a></div>
-            </div>
-            <div class="col-md-3 px-0 " id="iconvstext">
-                <div class="icon"><span class="fa fa-phone d-flex align-items-center justify-content-center "></span></div>
-                <div class="text">Phone: <a href="#">+8490999999999</a></div>
-            </div>
-            <div class="col-md-3 px-0 " id="iconvstext">
-                <div class="icon"><span class="fa fa-paper-plane d-flex align-items-center justify-content-center"></span></div>
-                <div class="text">Email: <a href="#">TechTitan@gmail.com</a></div>
-            </div>
-            <div class="col-md-3 px-0 " id="iconvstext">
-                <div class="icon"><span class="fa fa-globe d-flex align-items-center justify-content-center"></span></div>
-                <div class="text">Website: <a href="#">TechTitan.com</a></div>
-            </div>
-        </div>
-    </div>
-</div>
-<footer>
+                    @if(session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                    @endif
+
+                    <form method="POST" action="{{ route('user.change_password.post') }}">
+                        @csrf
+
+                        <div class="form-group">
+                            <label for="current_password">Current Password</label>
+                            <input type="password" id="current_password" name="current_password" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="new_password">New Password</label>
+                            <input type="password" id="new_password" name="new_password" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="new_password_confirmation">Confirm New Password</label>
+                            <input type="password" id="new_password_confirmation" name="new_password_confirmation" class="form-control">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Change Password</button>
+                    </form>
+                </div>	
+					</div>
+				</div>
+			</div>		
+		</main>
+    <footer>
     <div class="content">
       <div class="top">
         <div class="logo-details details left">
@@ -180,10 +223,8 @@
       </div>
     </div>
   </footer>
-      <script src="{{ asset('assets/js/js_admin/nav.js')}}"></script>  
+	</div>	
+	<script src="{{ asset('assets/js/js_admin/nav.js')}}"></script>
 </body>
 </html>
-
-
-
 

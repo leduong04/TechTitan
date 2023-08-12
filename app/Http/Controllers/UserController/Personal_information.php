@@ -4,6 +4,7 @@ namespace App\Http\Controllers\UserController;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class Personal_information extends Controller
 {
@@ -20,7 +21,10 @@ class Personal_information extends Controller
      */
     public function create()
     {
-        return view('/User/personal_information');
+        $user = Auth::user();
+
+
+        return view('/User/personal_information', compact('user'));
     }
 
     /**
@@ -50,9 +54,19 @@ class Personal_information extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function updateProfile(Request $request)
     {
-        //
+        $user = Auth::user();
+
+        $user->name = $request->input('fname');
+        $user->email = $request->input('email');
+        $user->gender = $request->input('gender');
+        $user->address = $request->input('address');
+        $user->date_of_birth = $request->input('date');
+        $user->phone = $request->input('phone');
+        $user->save();
+
+    return redirect()->back()->with('success', 'Profile updated successfully!');
     }
 
     /**
