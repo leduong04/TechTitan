@@ -14,12 +14,13 @@ use Illuminate\Support\Facades\Route;
 
 // Admin controller
 use App\Http\Controllers\AdminController\ProductAdminController;
-<<<<<<< HEAD
+
 use App\Http\Controllers\AdminController\CommentController;
-=======
+
+use App\Http\Controllers\AdminController\FeedbackController;
+
 use App\Http\Controllers\UserController\SmallController;
 
->>>>>>> origin/thanh
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,13 +49,13 @@ Route::get('/admin/orders', [OrdersController::class, 'show'])->name('admin.orde
 Route::get('/admin/order_details/{id}', [OrdersController::class, 'show_details'])->name('detail_order');
 Route::DELETE('/admin/order_details/delete/{id}', [OrdersController::class, 'delete']);
 
-<<<<<<< HEAD
+
 // ----------------------------
 Route::get('/product_detail', [ProductController::class, 'show_product_detail'])->name('user.product_detail');
-=======
+
 
 // Route::get('/product_detail', [ProductController::class, 'show_product_detail'])->name('user.product_detail');
->>>>>>> origin/thanh
+
 
 Route::get('/contact_us', [ContactUsController::class, 'show'])->name('user.contact_us');
 
@@ -65,12 +66,10 @@ Route::get('/login', [Login::class,'create'])->name('user.login');
 Route::get('/cart', [Cart::class,'create'])->name('user.cart');
 
 
-<<<<<<< HEAD
-=======
+
 Route::get('/home_page/{id}', [ProductController::class, 'show_product_detail'])->name('user.product_detail');
 
 Route::get('/admin/product', [ProductAdminController::class, 'show']);
->>>>>>> origin/thanh
 
 Route::get('/small/{categoryName}', [SmallController::class,'show'])->name('category.products');
 
@@ -82,7 +81,7 @@ Route::get('/add', function () {
     return view('/Admin/add_product');
 });
 
-<<<<<<< HEAD
+
 Route::get('/admin/product', [ProductAdminController::class, 'show']);
 Route::get('/admin/product_details/{id}', [ProductAdminController::class, 'show_details'])->name('detail_product');
 Route::DELETE('/admin/product_details/delete/{id}', [ProductAdminController::class, 'delete']);
@@ -92,7 +91,8 @@ Route::get('/admin/comment', [CommentController::class, 'show']);
 Route::DELETE('/admin/comment/delete/{id}', [CommentController::class, 'delete']);
 Route::get('/admin/comment_details/{id}', [CommentController::class, 'show_details'])->name('detail_comment');
 
+// feedback
+
+Route::get('/admin/feedback', [FeedbackController::class, 'show']);
 
 
-=======
->>>>>>> origin/thanh

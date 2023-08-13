@@ -9,7 +9,7 @@ class product extends Model
 {
     use HasFactory;
     protected $table = 'product';
-<<<<<<< HEAD
+
     protected $primaryKey = 'id';
     public $timestamps = true;
 
@@ -25,7 +25,7 @@ class product extends Model
         // 'uppdate_at',
         'id', 'product_name', 'category_id', 'quantity', 'curent_at'
     ];
-=======
+
 
     public function images(){
         return $this->hasMany(image::class, 'product_id');
@@ -34,5 +34,5 @@ class product extends Model
     {
         return $this->belongsTo(categories::class);
     }
->>>>>>> origin/thanh
+
 }

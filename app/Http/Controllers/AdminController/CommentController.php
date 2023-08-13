@@ -19,6 +19,7 @@ class CommentController extends Controller
     public function show_details($id){
         
         $comment = comment::findOrFail($id);
+        $comment = comment::with('images')->findOrFail($id);
         return view('./Admin/detail_comment', compact('comment'));
     }
 
@@ -26,7 +27,6 @@ class CommentController extends Controller
     {
         $comment = comment::find($id);
         
-        // Storage::delete('public/image/nhanvien/' . $product->img_link);
 
         $comment->delete();
 

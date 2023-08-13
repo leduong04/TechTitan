@@ -16,9 +16,8 @@ class orders extends Model
         'id', 'user_id', 'fullname', 'status', 'total_pay'
     ];
     use HasFactory;
-<<<<<<< HEAD
+
     
-=======
-    protected $table = 'orders';
->>>>>>> origin/thanh
+
+
 }

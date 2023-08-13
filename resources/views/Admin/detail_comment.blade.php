@@ -46,7 +46,7 @@
                     </a>
 					<div class="product-details">
                         <div class="product-image">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRLlPBqgMRZzLhsrp-YYgunRjdo9Hwwkmcog&usqp=CAU" alt="Product Image">
+                            <img src="{{ $image->img_link }}" alt="Product Image">
                         </div>
                         <div class="product-info">
                             <div class="info-row">
@@ -59,14 +59,14 @@
                                 <span class="pr_id">{{ $comment->user_id}}</span>
                               
                             </div>
-                            <div class="info-row">
+                            <!-- <div class="info-row">
 								<span class="info-label">Product Name:</span>
-                                <span class="pr_id">cay</span>
+                                <span class="pr_id">{{ $comment->product_name}}</span>
                                 
-                            </div>
+                            </div> -->
                             <div class="info-row">
 								<span class="info-label">User Comment:</span>
-                                <span class="pr_id">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque nobis enim illum adipisci consequuntur magni facere. Unde culpa nihil maiores. Dolores, praesentium aut? Quidem ut numquam vitae fugit cupiditate soluta!</span>
+                                <span class="pr_id">{{ $comment->comment}}</span>
                                 
                             </div>
                             <div class="info-row">
@@ -76,7 +76,7 @@
                             </div>
                             <div class="info-row">
 								<span class="info-label">User Rate:</span>
-                                <span class="pr_id">5 star</span>
+                                <span class="pr_id">{{ $comment->star}}</span>
                                 
                             </div>
                         </div>
