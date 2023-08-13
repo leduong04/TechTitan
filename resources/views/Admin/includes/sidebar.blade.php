@@ -30,31 +30,31 @@
             <li>
                 <a href="#" onclick="product();">
                     <i class='bx bxs-shopping-bag'></i>
-                    <span class="text">Sản phẩm</span>
+                    <span class="text">Product</span>
                 </a>
             </li>
             <li>
                 <a href="#">
                     <i class='bx bxs-doughnut-chart'></i>
-                    <span class="text">Danh mục sản phẩm</span>
+                    <span class="text">Categories</span>
                 </a>
             </li>
             <li>
                 <a href="#">
                     <i class='bx bxs-cart-alt'></i>
-                    <span class="text">Đơn hàng</span>
+                    <span class="text">Order</span>
                 </a>
             </li>
             <li>
                 <a href="#">
                     <i class='bx bxs-message-dots'></i>
-                    <span class="text">Đánh giá</span>
+                    <span class="text">Comment</span>
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <i class='bx bxs-user-detail'></i>
-                    <span class="text">Khách hàng</span>
+                    <i class='bx bxs-message-rounded-dots'></i>
+                    <span class="text">Feedback</span>
                 </a>
             </li>
             <li>
